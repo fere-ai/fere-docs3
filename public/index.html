@@ -1,12 +1,1603 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hello, World!</title>
-	</head>
-	<body>
-		<h1 id="heading">Hello, World!</h1>
-		<p>This page comes from a static asset stored at `public/index.html` as configured in `wrangler.jsonc`.</p>
-	</body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fere AI — Docs</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #050505;
+      --bg-secondary: rgba(20, 20, 20, 0.6);
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --bg-card-hover: rgba(255, 255, 255, 0.06);
+      --bg-elevated: #1a1a1a;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.15);
+      --border-active: rgba(235, 203, 139, 0.25);
+      --text-primary: #F2F2F2;
+      --text-secondary: #9CA3AF;
+      --text-muted: #525252;
+      --accent-warm: #EBCB8B;
+      --accent-gold: #EBCB8B;
+      --accent-glow: rgba(235, 203, 139, 0.3);
+      --accent-green: #A3BE8C;
+      --accent-red: #BF616A;
+      --accent-blue: #88C0D0;
+      --font-display: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* Light mode overrides */
+    body.light {
+      --bg-primary: #fafafa;
+      --bg-secondary: rgba(245, 245, 245, 0.85);
+      --bg-card: rgba(0, 0, 0, 0.02);
+      --bg-card-hover: rgba(0, 0, 0, 0.04);
+      --bg-elevated: #e8e8e8;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-hover: rgba(0, 0, 0, 0.14);
+      --border-active: rgba(160, 120, 40, 0.25);
+      --text-primary: #111111;
+      --text-secondary: #4B5563;
+      --text-muted: #9CA3AF;
+      --accent-warm: #b8860b;
+      --accent-gold: #b8860b;
+      --accent-glow: rgba(184, 134, 11, 0.15);
+      --accent-green: #2d7a2d;
+      --accent-red: #c0392b;
+      --accent-blue: #2e86ab;
+    }
+    body.light { background-image: radial-gradient(circle at 50% 0%, #f0f0f0 0%, transparent 70%); }
+    body.light ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); }
+    body.light ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.18); }
+    body.light .code-block { background: rgba(0,0,0,0.03); backdrop-filter: blur(10px); }
+    body.light .sim-terminal { background: #ffffff; }
+    body.light .sim-header { background: rgba(0,0,0,0.02); }
+    body.light .digest-header { background: rgba(0,0,0,0.02); }
+    body.light .scenario-msg { background: rgba(0,0,0,0.03); }
+    body.light .faq-steps { background: rgba(0,0,0,0.03); }
+    body.light .sim-status.idle { background: rgba(0,0,0,0.05); }
+    body.light .sim-status.running { background: rgba(184,134,11,0.08); }
+    body.light .sim-status.complete { background: rgba(45,122,45,0.08); }
+    body.light .doc h1 { background: linear-gradient(180deg, #111 0%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    body.light .doc h1 em { background: linear-gradient(90deg, var(--accent-warm), #333); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    body.light .main::before { background: radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,0.03) 0%, transparent 100%); }
+    body.light .sidebar { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    body.light .feature-card .card-icon { box-shadow: 0 0 12px rgba(184,134,11,0.1); }
+    body.light .play-btn { color: var(--text-primary); }
+    body.light .logo-img { filter: invert(1); }
+    body.light .mobile-hamburger { background: rgba(240,240,240,0.85); border-color: rgba(0,0,0,0.1); color: var(--text-primary); }
+    body.light .mobile-overlay { background: rgba(255,255,255,0.5); }
+
+    body {
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, transparent 70%), url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      color: var(--text-primary);
+      font-family: var(--font-body); display: flex;
+      min-height: 100vh; overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -0.015em;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+    /* ═══ SIDEBAR ═══ */
+    .sidebar {
+      width: 260px; background: var(--bg-secondary);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255,255,255,0.03);
+      display: flex; flex-direction: column; flex-shrink: 0;
+      height: 100vh; z-index: 10;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .sidebar-logo {
+      padding: 20px 24px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 14px;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .sidebar-logo:hover { opacity: 0.8; }
+    .logo-img {
+      width: 32px; height: 32px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+    }
+    .logo-text { display: flex; flex-direction: column; }
+    .logo-text strong {
+      font-family: var(--font-display); font-size: 17px; font-weight: 600;
+      letter-spacing: -0.01em; color: var(--text-primary);
+    }
+    .logo-text small {
+      font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--text-muted);
+      font-weight: 500; margin-top: 2px;
+    }
+    .sidebar-nav { flex: 1; overflow-y: hidden; padding: 12px 12px 8px; }
+    .nav-section { margin-bottom: 16px; }
+    .nav-section-title {
+      font-size: 9px; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--text-muted);
+      font-weight: 600; padding: 0 14px; margin-bottom: 4px;
+    }
+    .nav-item {
+      display: flex; align-items: center; gap: 10px;
+      width: 100%; text-align: left; padding: 7px 14px;
+      border: none; background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-body); font-size: 13px; font-weight: 500;
+      border-radius: 6px; cursor: pointer;
+      transition: all 0.2s ease; margin-bottom: 1px; position: relative;
+    }
+    .nav-item:hover { background: rgba(255,255,255,0.04); color: var(--text-primary); }
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+      color: #fff; font-weight: 500;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      border-left: 2px solid var(--accent-warm);
+    }
+    .nav-item.active::before { display: none; }
+    .nav-item i { width: 16px; text-align: center; font-size: 11px; opacity: 0.6; }
+    .nav-item.active i { opacity: 1; }
+    .sidebar-footer { padding: 10px 12px; border-top: 1px solid var(--border); }
+    .sidebar-badge {
+      display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+      background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .pulse-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 8px rgba(163,190,140,0.5);
+      animation: pulse-glow 2s infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(163,190,140,0.5); }
+      50% { opacity: 0.6; box-shadow: 0 0 4px rgba(163,190,140,0.3); }
+    }
+    .sidebar-badge span { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); font-weight: 500; }
+
+    /* ═══ MAIN ═══ */
+    .main { flex: 1; height: 100vh; overflow-y: auto; position: relative; }
+    .main::before {
+      content: ''; position: fixed; top: -200px; left: 50%;
+      transform: translateX(-50%); width: 800px; height: 400px;
+      background: radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 100%);
+      pointer-events: none; z-index: 0;
+    }
+    .content-area {
+      max-width: 780px; margin: 0 auto; padding: 56px 48px 120px;
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.25s ease;
+      position: relative; z-index: 1;
+      animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .content-area.fade-out { opacity: 0; }
+    @keyframes slideUpFade {
+      0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ═══ TYPOGRAPHY ═══ */
+    .doc h1 {
+      font-family: var(--font-display); font-size: 3.5rem; font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1.1;
+      background: linear-gradient(180deg, #fff 0%, #a0a0a0 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 24px;
+    }
+    .doc h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--accent-warm), #fff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .doc .subtitle {
+      font-size: 1.15rem; line-height: 1.65; color: var(--text-secondary);
+      margin-bottom: 40px; max-width: 620px; font-weight: 300;
+    }
+    .doc h2 {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+      letter-spacing: -0.02em; color: var(--text-primary);
+      margin-top: 64px; margin-bottom: 16px; padding-bottom: 0;
+      border-bottom: none;
+    }
+    .doc h2:first-of-type { margin-top: 40px; }
+    .doc h3 {
+      font-size: 1rem; font-weight: 600; color: var(--text-primary);
+      margin-top: 32px; margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .doc p {
+      font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary);
+      margin-bottom: 16px; font-weight: 300; max-width: 680px;
+    }
+    .doc p strong { color: var(--text-primary); font-weight: 500; }
+    .doc a { color: var(--accent-warm); text-decoration: underline; text-decoration-color: rgba(235,203,139,0.3); text-underline-offset: 3px; }
+    .doc a:hover { text-decoration-color: var(--accent-warm); }
+    .doc ul { list-style: none; padding: 0; margin-bottom: 20px; }
+    .doc li {
+      position: relative; padding-left: 20px; margin-bottom: 10px;
+      color: var(--text-secondary); font-size: 0.95rem; line-height: 1.65; font-weight: 300;
+    }
+    .doc li::before {
+      content: ''; position: absolute; left: 2px; top: 10px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent-warm); opacity: 0.6;
+    }
+    .doc li strong { color: var(--text-primary); font-weight: 500; }
+
+    /* ═══ COMPONENTS ═══ */
+    .doc-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border-radius: 100px;
+      background: rgba(235,203,139,0.06); border: 1px solid rgba(235,203,139,0.12);
+      font-size: 10px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--accent-warm); margin-bottom: 24px;
+    }
+    .doc-badge i { font-size: 8px; }
+    .callout {
+      padding: 20px 24px; border-radius: 16px; margin: 24px 0;
+      border: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05);
+    }
+    .callout::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+    .callout-info { background: rgba(136,192,208,0.04); border-color: rgba(136,192,208,0.1); }
+    .callout-info::before { background: var(--accent-blue); }
+    .callout-warm { background: rgba(235,203,139,0.04); border-color: rgba(235,203,139,0.1); }
+    .callout-warm::before { background: var(--accent-warm); }
+    .callout-green { background: rgba(163,190,140,0.04); border-color: rgba(163,190,140,0.1); }
+    .callout-green::before { background: var(--accent-green); }
+    .callout h4 { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+    .callout p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
+    .callout a { color: var(--accent-warm); text-decoration: underline; text-decoration-color: rgba(235,203,139,0.3); text-underline-offset: 3px; }
+    .callout a:hover { text-decoration-color: var(--accent-warm); }
+    .code-block {
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px;
+      padding: 24px; font-family: var(--font-mono); font-size: 0.82rem;
+      line-height: 1.7; color: var(--text-secondary); margin: 20px 0;
+      overflow-x: auto; position: relative; backdrop-filter: blur(10px);
+    }
+    .code-block .kw { color: var(--accent-warm); }
+    .code-block .val { color: var(--accent-green); }
+    .code-block .cm { color: var(--text-muted); font-style: italic; }
+    .code-block .acc { color: var(--accent-gold); }
+    code {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      padding: 2px 7px; border-radius: 5px; font-family: var(--font-mono);
+      font-size: 0.82em; color: var(--accent-warm);
+    }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+    .feature-card {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;
+      padding: 22px; position: relative; overflow: hidden;
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      background: var(--bg-card-hover); transform: translateY(-4px);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .feature-card .card-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: var(--text-primary); margin-bottom: 14px;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+    .feature-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+    .feature-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; margin: 0; font-weight: 300; }
+    .partner-bar {
+      display: flex; align-items: center; gap: 32px; padding: 20px 0; margin: 20px 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .partner-bar span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); font-weight: 600; white-space: nowrap; }
+    .partner-logos { display: flex; align-items: center; gap: 28px; }
+    .partner-logo { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--text-muted); opacity: 0.5; transition: opacity 0.2s; white-space: nowrap; }
+    .partner-logo:hover { opacity: 0.8; }
+    .chain-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .chain-pill {
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px;
+      border-radius: 100px; background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border); font-size: 12px;
+      color: var(--text-secondary); font-weight: 500; transition: all 0.2s;
+    }
+    .chain-pill:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.05); }
+    .chain-pill .cd { width: 6px; height: 6px; border-radius: 50%; }
+    .compare-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.85rem; }
+    .compare-table th { text-align: left; padding: 12px 16px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); }
+    .compare-table td { padding: 14px 16px; color: var(--text-secondary); border-bottom: 1px solid var(--border); font-weight: 300; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .hl { color: var(--text-primary); font-weight: 500; }
+    .security-visual {
+      background: linear-gradient(135deg, rgba(235,203,139,0.03), rgba(163,190,140,0.03));
+      border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 32px;
+      margin: 24px 0; display: flex; align-items: center; gap: 32px;
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05);
+    }
+    .security-icon-big {
+      width: 72px; height: 72px; border-radius: 20px;
+      background: rgba(235,203,139,0.06); border: 1px solid rgba(235,203,139,0.1);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(235,203,139,0.1);
+    }
+    .security-icon-big i { font-size: 28px; color: var(--accent-gold); opacity: 0.7; }
+    .step-flow { margin: 24px 0; }
+    .step-item { display: flex; gap: 16px; position: relative; }
+    .step-line { display: flex; flex-direction: column; align-items: center; width: 24px; flex-shrink: 0; }
+    .step-dot {
+      width: 24px; height: 24px; border-radius: 50%; background: var(--bg-elevated);
+      border: 1.5px solid var(--border-hover);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--text-muted); font-weight: 600; flex-shrink: 0; z-index: 1;
+    }
+    .step-connector { width: 1px; flex: 1; background: var(--border); min-height: 20px; }
+    .step-content { padding-bottom: 24px; flex: 1; }
+    .step-content h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .step-content p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+
+    /* ═══ SCENARIO CARD ═══ */
+    .scenario-card {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px; padding: 24px; margin: 14px 0;
+      position: relative; overflow: hidden;
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05);
+    }
+    .scenario-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: linear-gradient(to right, var(--accent-warm), transparent); opacity: 0.3;
+    }
+    .scenario-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent-warm); font-weight: 600; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .scenario-msg {
+      font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.6;
+      color: var(--text-primary); padding: 14px 18px;
+      background: rgba(0,0,0,0.25); border-radius: 10px;
+      border: 1px solid var(--border); margin-bottom: 14px;
+    }
+    .scenario-what { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+    .scenario-what strong { color: var(--text-secondary); font-weight: 500; }
+
+    /* ═══ DIGEST PREVIEW ═══ */
+    .digest-preview { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin: 24px 0; box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05); }
+    .digest-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.03); }
+    .digest-header h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+    .digest-header .time-pill { font-family: var(--font-mono); font-size: 9px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: rgba(235,203,139,0.1); color: var(--accent-warm); text-transform: uppercase; }
+    .digest-body { padding: 20px; }
+    .digest-section { margin-bottom: 18px; }
+    .digest-section:last-child { margin-bottom: 0; }
+    .digest-section h5 { font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+    .digest-section p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+    .digest-item { display: flex; gap: 10px; margin-bottom: 6px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .digest-item .di { color: var(--accent-warm); flex-shrink: 0; margin-top: 2px; font-size: 8px; }
+
+    /* ═══ SIMULATION ═══ */
+    .sim-terminal { background: #000; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; margin: 28px 0; position: relative; box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5); }
+    .sim-terminal::after { content: ''; position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(135deg, rgba(235,203,139,0.02) 0%, transparent 50%); pointer-events: none; }
+    .sim-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.03); }
+    .sim-header-left { display: flex; align-items: center; gap: 10px; }
+    .sim-header-left .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-green); animation: pulse-glow 2s infinite; }
+    .sim-header-left span { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); font-weight: 500; }
+    .sim-status { font-family: var(--font-mono); font-size: 9px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .sim-status.idle { background: rgba(255,255,255,0.04); color: var(--text-muted); }
+    .sim-status.running { background: rgba(235,203,139,0.1); color: var(--accent-warm); border: 1px solid rgba(235,203,139,0.2); box-shadow: 0 0 10px rgba(235,203,139,0.1); animation: pulse 1.5s infinite; }
+    .sim-status.complete { background: rgba(163,190,140,0.12); color: var(--accent-green); }
+    .sim-prompt { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .sim-prompt label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 8px; }
+    .sim-prompt-text { font-size: 0.88rem; color: var(--text-primary); font-weight: 400; line-height: 1.5; min-height: 22px; }
+    .typing-cursor::after {
+      content: ''; display: inline-block; width: 8px; height: 18px;
+      background: var(--accent-warm); animation: blink 1s step-end infinite;
+      vertical-align: middle; margin-left: 2px;
+      box-shadow: 0 0 8px var(--accent-warm);
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .sim-logs { padding: 16px 20px 20px; min-height: 180px; max-height: 260px; overflow-y: auto; }
+    .sim-logs label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 10px; }
+    .sim-log-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5; opacity: 0; animation: logIn 0.4s ease forwards; }
+    @keyframes logIn { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
+    .sim-log-line .log-icon { width: 16px; flex-shrink: 0; text-align: center; margin-top: 1px; }
+    .sim-log-line.processing { color: var(--accent-warm); }
+    .sim-log-line.processing .log-icon { animation: spin 1.5s linear infinite; }
+    .sim-log-line.success { color: var(--accent-green); }
+    .sim-log-line.info { color: var(--accent-blue); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ═══ PLAY BUTTON ═══ */
+    .sim-play-overlay {
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 20px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .sim-play-overlay:hover .play-btn { background: rgba(255,255,255,0.1); transform: scale(1.02); box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+    .play-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 24px; border-radius: 100px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      color: #fff; font-family: var(--font-body);
+      font-size: 13px; font-weight: 600; transition: all 0.25s ease;
+    }
+    .play-btn i { font-size: 11px; }
+
+    /* ═══ FAQ ═══ */
+    .faq-item {
+      border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;
+      margin-bottom: 10px; overflow: hidden;
+      transition: border-color 0.2s;
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.03);
+    }
+    .faq-item:hover { border-color: var(--border-hover); }
+    .faq-item.open { border-color: var(--border-active); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px; cursor: pointer; gap: 16px;
+      background: transparent; border: none; width: 100%;
+      text-align: left; font-family: var(--font-body);
+      font-size: 0.92rem; font-weight: 500; color: var(--text-primary);
+      transition: background 0.15s;
+    }
+    .faq-q:hover { background: rgba(255,255,255,0.02); }
+    .faq-q i { color: var(--text-muted); font-size: 10px; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-item.open .faq-q i { transform: rotate(180deg); color: var(--accent-warm); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 22px;
+    }
+    .faq-item.open .faq-a { max-height: 800px; padding: 0 22px 20px; }
+    .faq-a p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; font-weight: 300; }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text-primary); font-weight: 500; }
+    .faq-a .faq-steps {
+      background: rgba(0,0,0,0.2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 20px; margin: 12px 0;
+      font-size: 0.84rem; line-height: 1.7; color: var(--text-secondary);
+    }
+    .faq-a .faq-steps strong { color: var(--accent-warm); }
+
+    /* ═══ THEME TOGGLE ═══ */
+    .theme-toggle {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px; margin-bottom: 6px;
+      background: rgba(255,255,255,0.03); border-radius: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .theme-toggle:hover { border-color: var(--border-hover); }
+    .theme-toggle-track {
+      width: 34px; height: 18px; border-radius: 100px;
+      background: var(--bg-elevated); border: 1px solid var(--border-hover);
+      position: relative; transition: all 0.25s; flex-shrink: 0;
+    }
+    .theme-toggle-thumb {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent-warm);
+      position: absolute; top: 2px; left: 2px;
+      transition: transform 0.25s ease;
+    }
+    body.light .theme-toggle-thumb { transform: translateX(16px); }
+    .theme-toggle span {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--text-muted); font-weight: 500;
+    }
+
+    /* ═══ ANIMATIONS ═══ */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-in { animation: fadeUp 0.5s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+    /* ═══ MOBILE NAV ═══ */
+    .mobile-hamburger {
+      display: none; position: fixed; top: 16px; left: 16px; z-index: 100;
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(20,20,20,0.8); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer; align-items: center; justify-content: center;
+      color: var(--text-primary); font-size: 16px;
+      transition: all 0.2s;
+    }
+    .mobile-hamburger:hover { background: rgba(40,40,40,0.9); }
+    .mobile-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .mobile-overlay.open { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .sidebar {
+        display: flex; position: fixed; left: -280px;
+        top: 0; bottom: 0; width: 270px;
+        z-index: 50; transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: none;
+      }
+      .sidebar.open { left: 0; box-shadow: 20px 0 60px rgba(0,0,0,0.5); }
+      .mobile-hamburger { display: flex; }
+      .mobile-overlay { display: block; pointer-events: none; }
+      .mobile-overlay.open { pointer-events: auto; }
+      .content-area { padding: 64px 20px 80px; }
+      .doc h1 { font-size: 2.4rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .security-visual { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+    <div class="sidebar-logo" onclick="showPage('overview')">
+      <img src="data:image/png;base64,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" alt="Fere" class="logo-img">
+      <div class="logo-text"><strong>Fere AI</strong><small>Documentation</small></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Get Started</div>
+        <button onclick="showPage('overview')" class="nav-item active" data-page="overview"><i class="fa-solid fa-house"></i> Welcome</button>
+        <button onclick="showPage('agent')" class="nav-item" data-page="agent"><i class="fa-solid fa-message"></i> Fere AI Agent</button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Features</div>
+        <button onclick="showPage('pulse')" class="nav-item" data-page="pulse"><i class="fa-solid fa-signal"></i> Market Pulse</button>
+        <button onclick="showPage('recipes')" class="nav-item" data-page="recipes"><i class="fa-solid fa-layer-group"></i> Recipes</button>
+        <button onclick="showPage('schedules')" class="nav-item" data-page="schedules"><i class="fa-solid fa-clock"></i> Schedules</button>
+        <button onclick="showPage('polymarket')" class="nav-item" data-page="polymarket"><i class="fa-solid fa-chart-pie"></i> Polymarket Discovery</button>
+        <button onclick="showPage('crosschain')" class="nav-item" data-page="crosschain"><i class="fa-solid fa-right-left"></i> Cross-Chain</button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Your Wallet</div>
+        <button onclick="showPage('wallet')" class="nav-item" data-page="wallet"><i class="fa-solid fa-wallet"></i> Wallet & Security</button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Rewards</div>
+        <button onclick="showPage('credits')" class="nav-item" data-page="credits"><i class="fa-solid fa-coins"></i> Credits</button>
+        <button onclick="showPage('referral')" class="nav-item" data-page="referral"><i class="fa-solid fa-gift"></i> Refer & Earn</button>
+        <button onclick="showPage('points')" class="nav-item" data-page="points"><i class="fa-solid fa-trophy"></i> Points & Leaderboard</button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Help</div>
+        <button onclick="showPage('faq')" class="nav-item" data-page="faq"><i class="fa-solid fa-circle-question"></i> FAQ</button>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="theme-toggle-track"><div class="theme-toggle-thumb"></div></div>
+        <span id="theme-label">Light Mode</span>
+      </div>
+      <div class="sidebar-badge"><div class="pulse-dot"></div><span>All Systems Operational</span></div>
+    </div>
+  </aside>
+
+  <!-- ═══ MOBILE NAV ═══ -->
+  <button class="mobile-hamburger" onclick="toggleMobileNav()"><i class="fa-solid fa-bars" id="mobile-icon"></i></button>
+  <div class="mobile-overlay" onclick="toggleMobileNav()"></div>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main" id="main-scroll">
+    <div class="content-area doc" id="content-container"></div>
+  </main>
+
+  <script>
+    const container = document.getElementById('content-container');
+    const mainScroll = document.getElementById('main-scroll');
+    let simTimeouts = [];
+    function clearSims() { simTimeouts.forEach(t => clearTimeout(t)); simTimeouts = []; }
+
+    const pages = {
+
+/* ══════════ OVERVIEW ══════════ */
+overview: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-circle"></i> Welcome to Fere</div>
+  <h1 class="animate-in delay-1">AI Agents That<br><em>Actually Trade.</em></h1>
+  <p class="subtitle animate-in delay-2">Fere AI is an autonomous AI agent with its own wallet. Tell it what you want in plain English — it researches, reasons, and executes trades on your behalf, across every major chain, around the clock.</p>
+
+  <div class="partner-bar animate-in delay-3">
+    <span>Powered By</span>
+    <div class="partner-logos">
+      <div class="partner-logo">◆ Coinbase CDP</div>
+      <div class="partner-logo">◇ Base</div>
+      <div class="partner-logo">◆ Uniswap</div>
+      <div class="partner-logo">◇ 1inch</div>
+    </div>
+  </div>
+
+  <div class="callout callout-green animate-in delay-4">
+    <h4><i class="fa-solid fa-trophy" style="margin-right:6px; color:var(--accent-gold);"></i> Featured on Coinbase</h4>
+    <p>Fere AI is an official <a href="https://www.coinbase.com/developer-platform/discover/case-studies/fereai" target="_blank">Coinbase Developer Platform case study</a> — recognized for building scalable, autonomous trading agents powered by CDP Server Wallets.</p>
+  </div>
+
+  <h2>What Is Fere?</h2>
+  <p>Think of Fere as an AI assistant — like the ones you already use for writing or coding — but built specifically for crypto, and loaded with its own wallet. You talk to it, it thinks, and it acts.</p>
+  <p>You can ask it to do simple things like swap tokens, or complex things like <em>"scan Base for undervalued tokens, check their social sentiment, and buy the best one."</em> It breaks that down into steps, executes them in order, and reports back what it did and why.</p>
+
+  <h2>What Can You Do?</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-message"></i></div>
+      <h4>Trade With Words</h4>
+      <p>Describe what you want in plain language. Fere handles routing, gas, execution — everything.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-crosshairs"></i></div>
+      <h4>TP/SL on Any Token</h4>
+      <p>Set take-profit and stop-loss on even the most obscure tokens — memecoins, microcaps, anything.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+      <h4>Gasless Cross-Chain</h4>
+      <p>Swap across Base, Ethereum, Solana, Monad and more without worrying about gas or bridges.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
+      <h4>Autonomous Schedules</h4>
+      <p>Write a complex strategy once. Have it run every hour, every day — Fere thinks and trades on its own.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-newspaper"></i></div>
+      <h4>Market Pulse</h4>
+      <p>Fere scans millions of messages across social media. Get a full market summary in 2 minutes, not 2 hours.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+      <h4>Limit Orders Anywhere</h4>
+      <p>Place limit orders on any DEX token — not just the ones listed on centralized exchanges.</p>
+    </div>
+  </div>
+
+  <h2>See It In Action</h2>
+  <p>This is exactly how Fere works — you describe a strategy, and the agent reasons through each step and executes.</p>
+
+  <div class="sim-terminal" id="overview-sim">
+    <div class="sim-header">
+      <div class="sim-header-left"><div class="dot"></div><span>Live Agent Environment</span></div>
+      <div class="sim-status idle" id="overview-sim-status">Ready</div>
+    </div>
+    <div class="sim-prompt" id="overview-sim-prompt" style="display:none;">
+      <label>Your Message</label>
+      <div class="sim-prompt-text"><span id="overview-sim-typing"></span><span class="typing-cursor" id="overview-cursor"></span></div>
+    </div>
+    <div class="sim-logs" id="overview-sim-logs" style="display:none;"><label>Agent Execution Log</label></div>
+    <div class="sim-play-overlay" id="overview-play" onclick="playSim('overview')">
+      <div class="play-btn"><i class="fa-solid fa-play"></i> Watch the agent execute a multi-step trade</div>
+    </div>
+  </div>
+
+  <h2>The Interface at a Glance</h2>
+  <p>When you open Fere, you'll see three main areas:</p>
+  <ul>
+    <li><strong>Left sidebar</strong> — Navigation to Home, Market Pulse, Schedules, Polymarket Discovery, your Chats history, and more</li>
+    <li><strong>Center</strong> — The main chat area with the <em>"Ask Fere Anything..."</em> input, trending topic suggestions, and recipe cards to get you started</li>
+    <li><strong>Right panel</strong> — Your wallet, always visible — showing your total balance, token holdings across chains, active limit orders, and TP/SL positions</li>
+  </ul>
+
+  <table class="compare-table">
+    <thead><tr><th>Section</th><th class="hl">What It Does</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">Fere AI Agent</td><td>Your main AI — chat with it to trade, research, analyze, and manage positions</td></tr>
+      <tr><td class="hl">Market Pulse</td><td>Scans millions of social messages to give you a crypto digest for any time window</td></tr>
+      <tr><td class="hl">Recipes</td><td>Pre-built one-click workflows to get you started — trending tokens, DCA, and more</td></tr>
+      <tr><td class="hl">Schedules</td><td>Run any complex instruction on repeat — autonomous trading that thinks every cycle</td></tr>
+      <tr><td class="hl">Polymarket Discovery</td><td>AI-curated prediction markets — discover the best bets, with auto-trading coming soon</td></tr>
+      <tr><td class="hl">Wallet</td><td>Always visible, always secure — powered by Coinbase CDP Server Wallets</td></tr>
+      <tr><td class="hl">Credits</td><td>The fuel for your agent — free daily claims, purchase with any crypto token</td></tr>
+      <tr><td class="hl">Refer & Earn</td><td>Share referral codes, earn 200 credits per friend who signs up</td></tr>
+      <tr><td class="hl">Points</td><td>Track your activity, climb the weekly leaderboard, build your streak</td></tr>
+    </tbody>
+  </table>
+`,
+
+/* ══════════ FERE AI AGENT ══════════ */
+agent: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-message"></i> The Core</div>
+  <h1 class="animate-in delay-1">Meet Your <em>AI Agent.</em></h1>
+  <p class="subtitle animate-in delay-2">Fere AI is the central intelligence you interact with. It's a conversational AI agent — you tell it what you want, it thinks through the problem, and takes action with its own loaded wallet.</p>
+
+  <h2>How It Works</h2>
+  <p>The main interface is a chat. You'll see the <strong>"Ask Fere Anything..."</strong> input front and center, with your wallet always visible on the right. Below the input, you'll notice <strong>trending topic suggestions</strong> — these are AI-generated conversation starters based on what's happening in crypto right now. You can click any of them, or type your own message.</p>
+  <p>When you send a message, Fere doesn't just pattern-match keywords and fire off a trade. It <strong>decomposes your request into tasks</strong>, reasons about each one, and executes them in the right order. If something is ambiguous, it asks you to clarify before acting.</p>
+
+  <div class="callout callout-info">
+    <h4>Think of It This Way</h4>
+    <p>Fere is like having a highly capable analyst and trader sitting next to you — except it works 24/7, never sleeps, understands every chain, and can act instantly.</p>
+  </div>
+
+  <h2>What Can You Ask?</h2>
+  <p>Anything you'd want to do in crypto. Here are some real examples, from simple to advanced:</p>
+
+  <div class="scenario-card">
+    <div class="scenario-label"><i class="fa-solid fa-circle" style="font-size:5px;"></i> Simple</div>
+    <div class="scenario-msg">"Buy $50 of ETH on Base"</div>
+    <div class="scenario-what"><strong>What happens:</strong> Fere checks your wallet, finds the best route, estimates gas, and asks you to confirm before executing.</div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-label"><i class="fa-solid fa-circle" style="font-size:5px;"></i> Intermediate</div>
+    <div class="scenario-msg">"Set a limit order to buy BRETT if it drops 15%. Set TP at +40% and SL at -20%."</div>
+    <div class="scenario-what"><strong>What happens:</strong> Fere fetches the current price, calculates your targets, places the limit order, and arms the take-profit and stop-loss — all from one sentence. You'll see the TP/SL order appear under the token in your wallet panel.</div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-label"><i class="fa-solid fa-circle" style="font-size:5px;"></i> Advanced</div>
+    <div class="scenario-msg">"Scan Base for tokens between $500k-$2M market cap. Check their social sentiment on Twitter and Farcaster. If any scores above 80/100, buy $5 worth."</div>
+    <div class="scenario-what"><strong>What happens:</strong> Fere creates a multi-step plan — scan the chain, filter candidates, run sentiment analysis on each, evaluate the scores, then execute a trade only on the ones that pass your threshold. You see every step in the execution log.</div>
+  </div>
+
+  <h2>Live: Multi-Step Execution</h2>
+  <p>Watch Fere break down a complex instruction and reason through each step:</p>
+
+  <div class="sim-terminal" id="agent-sim">
+    <div class="sim-header">
+      <div class="sim-header-left"><div class="dot"></div><span>Fere AI Agent</span></div>
+      <div class="sim-status idle" id="agent-sim-status">Ready</div>
+    </div>
+    <div class="sim-prompt" id="agent-sim-prompt" style="display:none;">
+      <label>Your Message</label>
+      <div class="sim-prompt-text"><span id="agent-sim-typing"></span><span class="typing-cursor" id="agent-cursor"></span></div>
+    </div>
+    <div class="sim-logs" id="agent-sim-logs" style="display:none;"><label>Agent Execution Log</label></div>
+    <div class="sim-play-overlay" id="agent-play" onclick="playSim('agent')">
+      <div class="play-btn"><i class="fa-solid fa-play"></i> Watch the agent set a limit order with TP/SL</div>
+    </div>
+  </div>
+
+  <h2>Task Decomposition & Planning</h2>
+  <p>Under the hood, Fere uses a state-of-the-art orchestration system that breaks your natural language message into discrete, ordered tasks. Each task is handled by a specialized sub-agent — one for market data, one for sentiment analysis, one for trade execution, and so on.</p>
+  <p>This is what makes Fere different from bots that just execute a fixed command. Fere <strong>plans</strong>, <strong>reasons</strong>, and <strong>adapts</strong>. If the sentiment check comes back bearish, it won't blindly buy — it will tell you why it chose not to trade.</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <h4>Multi-Step Planning</h4>
+      <p>Complex instructions are broken into ordered tasks, each executed by the right specialist agent.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+      <h4>Reasoning, Not Rules</h4>
+      <p>Fere adapts to what it finds. It makes decisions based on live data — not static if-else scripts.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+      <h4>Asks Before Acting</h4>
+      <p>If your message is ambiguous, Fere asks follow-up questions instead of guessing wrong.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
+      <h4>Full Transparency</h4>
+      <p>Every step, every data point, every decision — logged in the execution trail for you to review.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-rotate"></i></div>
+      <h4>Retries & Fallbacks</h4>
+      <p>Failed route? Fere automatically retries with alternatives — no more lost trades during peak demand or hype periods.</p>
+    </div>
+  </div>
+
+  <h3>Chat History</h3>
+  <p>Every conversation with Fere is saved. You'll see your past chats listed in the left sidebar under <strong>Chats</strong> — click any one to pick up where you left off. This makes it easy to reference previous trades, strategies, or research.</p>
+
+  <div class="callout callout-warm">
+    <h4>Always Evolving</h4>
+    <p>Fere's planning and reasoning capabilities are under active research. Long-term thinking, persistent memory across sessions, and increasingly sophisticated strategy decomposition are all in development — the agent gets smarter continuously. When used with <strong>Schedules</strong>, Fere already accumulates and compresses knowledge across runs, building context maps that make every cycle more informed than the last.</p>
+  </div>
+`,
+
+/* ══════════ MARKET PULSE ══════════ */
+pulse: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-signal"></i> Market Pulse</div>
+  <h1 class="animate-in delay-1">Never Miss <em>Anything.</em></h1>
+  <p class="subtitle animate-in delay-2">Fere scans millions of messages across every major crypto channel — Twitter/X, Telegram, Discord, Farcaster, Reddit, Signal, and news outlets — and distills it into one beautiful, actionable summary.</p>
+
+  <h2>How It Works</h2>
+  <p>Open <strong>Market Pulse</strong> from the left sidebar, choose a time window — say, the last 8 hours — and hit generate. Within seconds, Fere's agents comb through the entire fire hose of crypto social media and deliver a structured report covering everything that happened while you were away.</p>
+  <p>That's it. No doom-scrolling Twitter for an hour. No checking 15 Telegram groups. No FOMO wondering what you missed overnight. Two to three minutes and you're fully caught up.</p>
+
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">1</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Choose Your Window</h4><p>Select how far back you want to look — 4 hours, 8 hours, 24 hours, or custom.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">2</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Fere Scans Everything</h4><p>Millions of messages across Twitter/X, Telegram, Discord, Farcaster, Reddit, Signal, and news — analyzed by AI in real time.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">3</div></div>
+      <div class="step-content"><h4>Get Your Digest</h4><p>A beautifully structured report with key narratives, alpha calls, whale movements, on-chain signals, and degen plays.</p></div>
+    </div>
+  </div>
+
+  <h2>Sample Digest</h2>
+  <div class="digest-preview">
+    <div class="digest-header"><h4>Crypto Market Pulse</h4><div class="time-pill">8H Window</div></div>
+    <div class="digest-body">
+      <div class="digest-section"><h5>📋 Summary</h5><p>Dynamic market shifts underway. Institutional ETH accumulation accelerating. Active debate around tokenomics models — buybacks vs. ve-tokens gaining traction.</p></div>
+      <div class="digest-section"><h5>📰 News & Developments</h5>
+        <div class="digest-item"><span class="di"><i class="fa-solid fa-circle"></i></span> Institutional players accumulated $105.5M in ETH over the last 8 hours</div>
+        <div class="digest-item"><span class="di"><i class="fa-solid fa-circle"></i></span> Saga paused SageEM flow following a ~$7M exploit</div>
+        <div class="digest-item"><span class="di"><i class="fa-solid fa-circle"></i></span> $SKR listed on Hyperliquid futures and Bithumb spot</div>
+      </div>
+      <div class="digest-section"><h5>🐋 Whale Watch</h5>
+        <div class="digest-item"><span class="di"><i class="fa-solid fa-circle"></i></span> Wallet 0x7a…9f moved 500k USDC to a fresh wallet — possible buy incoming</div>
+        <div class="digest-item"><span class="di"><i class="fa-solid fa-circle"></i></span> Heavy accumulation detected in AI-sector tokens over the last 4 hours</div>
+      </div>
+      <div class="digest-section"><h5>⛓️ On-Chain Signals</h5>
+        <div class="digest-item"><span class="di"><i class="fa-solid fa-circle"></i></span> Base TVL up 15% in 24h — driven by new memecoin launches</div>
+        <div class="digest-item"><span class="di"><i class="fa-solid fa-circle"></i></span> ETH mainnet gas at 12 gwei — encouraging L2 bridging activity</div>
+      </div>
+      <div class="digest-section"><h5>💡 Smart Money Flow</h5><p>Top wallets rotating out of SOL memes and into Base ecosystem plays. Watch for volume spikes in AERO and BRETT.</p></div>
+    </div>
+  </div>
+
+  <h2>Schedule Your Daily Briefing</h2>
+  <p>Don't want to even open the app? You can schedule Market Pulse to be delivered to your <strong>email</strong> or <strong>Telegram</strong> every morning. Wake up, read your digest over coffee, and know exactly where the market stands — before you've opened a single app.</p>
+
+  <div class="callout callout-warm">
+    <h4>Your Daily Crypto Briefing</h4>
+    <p>Set it to run at 7am every day with a 12-hour lookback. You'll get a comprehensive overnight digest delivered straight to your inbox or Telegram — like having a research team working for you while you sleep.</p>
+  </div>
+
+  <h2>Data Sources</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="card-icon"><i class="fa-brands fa-x-twitter"></i></div><h4>Twitter / X</h4><p>Key influencers, trending topics, alpha calls, and sentiment shifts.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-brands fa-telegram"></i></div><h4>Telegram & Discord</h4><p>Private group chatter, whale alerts, project announcements.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-rss"></i></div><h4>Farcaster & Reddit</h4><p>Onchain social sentiment, emerging narratives, community alpha.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-newspaper"></i></div><h4>News & Signal</h4><p>Breaking news, regulatory updates, macro signals.</p></div>
+  </div>
+`,
+
+/* ══════════ RECIPES ══════════ */
+recipes: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-layer-group"></i> Recipes</div>
+  <h1 class="animate-in delay-1">One-Click <em>Workflows.</em></h1>
+  <p class="subtitle animate-in delay-2">Recipes are pre-built, ready-to-run workflows that help you get the most out of Fere without writing a single message. Pick one, set a few parameters, and hit run.</p>
+
+  <h2>What Are Recipes?</h2>
+  <p>Think of recipes as starter templates. Each one packages a common task — like finding trending tokens, dollar-cost averaging, or buying a token on a specific chain — into a one-click experience. You pick a recipe, set options like which chain or how many tokens, and Fere runs it.</p>
+  <p>They're designed to help new users see what Fere can do <strong>before diving into writing complex strategies themselves</strong>. But even power users love them for quick, repeatable tasks.</p>
+  <p>You'll find recipe cards right on the Home screen, below the main input bar. You can also browse the full library by clicking <strong>"View Recipe Library"</strong>.</p>
+
+  <h2>How to Use a Recipe</h2>
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">1</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Browse Recipes</h4><p>See the available recipes on your Home screen or the Recipe Library — each one explains what it does.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">2</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Configure</h4><p>Set your parameters — which chain, how many results, budget, frequency, etc.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">3</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Run</h4><p>Hit run and watch Fere execute. The agent creates a plan, runs each task, and returns results.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">4</div></div>
+      <div class="step-content"><h4>Act on Results</h4><p>Review the output — like a list of trending tokens with charts — and take action from there.</p></div>
+    </div>
+  </div>
+
+  <h2>Available Recipes</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="card-icon">🔥</div><h4>Trending Tokens</h4><p>Find the top movers on any chain by volume — filtered for safety, liquidity, and honeypot risk.</p></div>
+    <div class="feature-card"><div class="card-icon">📊</div><h4>DCA on Frequency</h4><p>Dollar-cost average into any token on a daily, weekly, or custom schedule.</p></div>
+    <div class="feature-card"><div class="card-icon">🛒</div><h4>Buy Token on Chain</h4><p>Buy a specific token on any supported chain with automatic verification and routing.</p></div>
+    <div class="feature-card"><div class="card-icon">📈</div><h4>More Coming</h4><p>New recipes are added regularly. Have an idea? We'd love to hear it.</p></div>
+  </div>
+
+  <h2>From Recipes to Power Strategies</h2>
+  <p>Recipes are training wheels — really good ones. Once you see how Fere breaks down a "Trending Tokens" recipe into subtasks, you'll start to understand the building blocks, and before long you'll be writing messages like:</p>
+
+  <div class="code-block">
+<span class="acc">"Every morning, scan Base and Solana for tokens that gained</span>
+<span class="acc">30% overnight. Cross-reference with Twitter sentiment. If any</span>
+<span class="acc">score above 85, buy $10 worth and set TP at +50%, SL at -15%."</span>
+  </div>
+
+  <p>That's the power of Fere — recipes get you started, your imagination takes you further.</p>
+
+  <div class="callout callout-green">
+    <h4>Recipe Marketplace (Coming Soon)</h4>
+    <p>Soon, you'll be able to create powerful strategies, package them as recipes, and share or sell them to other Fere users. Your best strategies could become products.</p>
+  </div>
+`,
+
+/* ══════════ SCHEDULES ══════════ */
+schedules: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-clock"></i> Schedules</div>
+  <h1 class="animate-in delay-1">Set It. <em>Forget It.</em></h1>
+  <p class="subtitle animate-in delay-2">Schedules let you take any instruction — no matter how complex — and have Fere run it automatically on a recurring basis. This is autonomous trading that thinks and reasons every single cycle.</p>
+
+  <h2>What Are Schedules?</h2>
+  <p>A schedule is a strategy that runs on repeat. You write it once, tell Fere how often to run it, and then sit back. Every cycle, the agent goes through the full reasoning process — scanning, analyzing, deciding, and (if conditions are met) trading.</p>
+  <p>This isn't a dumb cron job. Every run is a <strong>fresh thinking session</strong>. The agent evaluates live data each time and makes independent decisions based on what it finds right now.</p>
+  <p>But here's the part that changes everything: <strong>Fere remembers.</strong></p>
+
+  <h2>Persistent Memory Across Runs</h2>
+  <p>Every time a schedule runs, the agent doesn't start from scratch — it carries forward everything it learned from previous runs. By day 7 of an hourly scan, your agent has accumulated a rich dataset of every token it evaluated, every score it gave, every trade it made or skipped, and every market pattern it observed.</p>
+  <p>This means the agent gets <strong>progressively smarter</strong> over time. It can spot patterns like "this token scored 85 three days ago, dropped to 60 yesterday, and is back at 82 today — that's a recovery signal." A stateless bot running the same command can never do this.</p>
+
+  <div class="callout callout-warm">
+    <h4>Intelligent Context, Not Brute Force</h4>
+    <p>Fere doesn't just dump every past result into memory. It uses <strong>intelligent compaction and context maps</strong> to distill weeks of data into the most relevant signals. Think of it as the agent building its own research notebook — organized, compressed, and optimized for decision-making. This is what makes Fere fundamentally different from tools like OpenClaw or other autonomous agents: purpose-built memory architecture tuned specifically for crypto market reasoning.</p>
+  </div>
+
+  <h2>Example: Hourly Token Scout</h2>
+  <div class="scenario-card">
+    <div class="scenario-label"><i class="fa-solid fa-clock"></i> Runs Every Hour</div>
+    <div class="scenario-msg">"Go to Base chain and find tokens between $10M-$20M market cap. Analyze them on socials and technical analysis and give them a score based on performance. Buy a token if it scores 90/100."</div>
+    <div class="scenario-what"><strong>Every hour, Fere will:</strong> scan the chain for candidates, run social and TA analysis on each, score them, and only execute a trade if the quality bar is met. You can check in on the Schedules page to see what happened in each run — which tokens were found, what they scored, and whether any trades were made.</div>
+  </div>
+
+  <h2>What You See</h2>
+  <p>Open <strong>Schedules</strong> from the left sidebar. For each active schedule, you can see:</p>
+  <ul>
+    <li><strong>Run history</strong> — Every past execution with full details on what the agent found and did</li>
+    <li><strong>Status</strong> — Whether the schedule is active, paused, or completed</li>
+    <li><strong>Next run</strong> — When the agent will execute next</li>
+    <li><strong>Results</strong> — Tokens analyzed, scores given, trades made (if any)</li>
+  </ul>
+
+  <div class="callout callout-info">
+    <h4>Pause or Stop Anytime</h4>
+    <p>You're always in control. Go to the Schedules tab, find the schedule you want, and stop it whenever you like. No lock-in, no penalties — your agent pauses immediately.</p>
+  </div>
+
+  <h2>More Schedule Ideas</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-sun"></i></div><h4>Morning Alpha Scout</h4><p>"Every day at 7am, find the top 5 trending tokens on Solana and give me a sentiment report."</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-bolt"></i></div><h4>Momentum Sniper</h4><p>"Every 30 min, check if any Base token gained 50%+ in the last hour with $100k+ volume. Buy $20."</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div><h4>Portfolio Guardian</h4><p>"Every 4 hours, check my positions. If any dropped 25% from entry, sell and move to USDC."</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-chart-line"></i></div><h4>DCA With Brains</h4><p>"Every Monday, buy $50 of ETH — but only if the 7-day RSI is below 40. Otherwise, skip."</p></div>
+  </div>
+
+  <div class="callout callout-warm">
+    <h4>Every Run Gets Smarter</h4>
+    <p>Unlike traditional bots, Fere doesn't just repeat a command. Each scheduled run is a fresh reasoning cycle with access to all previous runs. By week two, your agent has more context about your strategy's performance than you could track manually — and it uses that context to make better decisions every cycle.</p>
+  </div>
+`,
+
+/* ══════════ POLYMARKET ══════════ */
+polymarket: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-chart-pie"></i> Polymarket Discovery</div>
+  <h1 class="animate-in delay-1">Smarter Prediction <em>Markets.</em></h1>
+  <p class="subtitle animate-in delay-2">Fere's Polymarket Discovery section uses AI to surface the best prediction markets worth trading — doing the discovery work that Polymarket's own homepage can't.</p>
+
+  <h2>What Is This?</h2>
+  <p>Polymarket is the leading prediction market platform — you bet on real-world outcomes. But finding the right markets to trade is hard. There are thousands of markets, and the homepage algorithm isn't great at surfacing the ones with the best risk-reward opportunities.</p>
+  <p>Fere solves this. An AI agent constantly analyzes active Polymarket markets — evaluating odds, volume, time to expiry, news sentiment, and historical patterns — to recommend the markets most worth your attention.</p>
+
+  <h2>What You Get</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div><h4>AI-Curated Discovery</h4><p>Don't scroll endlessly. Fere surfaces the highest-signal markets across all categories — politics, crypto, sports, world events.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-chart-bar"></i></div><h4>Market Analysis</h4><p>Each recommended market comes with context — why the odds look interesting, what the news says, and where money is flowing.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div><h4>Trade Suggestions (Coming)</h4><p>Soon, Fere will offer specific position recommendations — which side to take, what odds to target, when to enter.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-robot"></i></div><h4>Autonomous Trading (Coming)</h4><p>The end goal: let Fere trade Polymarket for you — placing bets, managing positions, and capturing opportunities you'd miss.</p></div>
+  </div>
+
+  <div class="callout callout-warm">
+    <h4>Better Than the Homepage</h4>
+    <p>Polymarket's discovery is generic. Fere's is intelligent — it looks at odds movement, correlates with news and social sentiment, and finds markets where the probability pricing might be wrong. That's where the alpha is.</p>
+  </div>
+`,
+
+/* ══════════ CROSS-CHAIN ══════════ */
+crosschain: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-right-left"></i> Cross-Chain</div>
+  <h1 class="animate-in delay-1">One Wallet. <em>Every Chain.</em></h1>
+  <p class="subtitle animate-in delay-2">You don't need to think about chains, bridges, or gas tokens. Tell Fere what you want to buy — it figures out where your money is and how to get it there.</p>
+
+  <h2>Supported Chains</h2>
+  <div class="chain-pills">
+    <div class="chain-pill"><span class="cd" style="background:#627EEA;"></span> Ethereum</div>
+    <div class="chain-pill"><span class="cd" style="background:#0052FF;"></span> Base</div>
+    <div class="chain-pill"><span class="cd" style="background:#9945FF;"></span> Solana</div>
+    <div class="chain-pill"><span class="cd" style="background:#836EF9;"></span> Berachain</div>
+    <div class="chain-pill"><span class="cd" style="background:#8247E5;"></span> Monad</div>
+    <div class="chain-pill"><span class="cd" style="background:#FF0420;"></span> Optimism</div>
+    <div class="chain-pill"><span class="cd" style="background:#8B5CF6;"></span> Polygon</div>
+    <div class="chain-pill"><span class="cd" style="background:#28A0F0;"></span> Arbitrum</div>
+  </div>
+  <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">You'll see all supported chains at the bottom of your wallet panel. New chains are added regularly.</p>
+
+  <h2>How It Works</h2>
+  <p>You don't say "bridge ETH from Mainnet to Base." You say what you actually want:</p>
+
+  <div class="scenario-card">
+    <div class="scenario-label"><i class="fa-solid fa-right-left"></i> Cross-Chain</div>
+    <div class="scenario-msg">"I want to buy AERO on Base using my Mainnet ETH"</div>
+    <div class="scenario-what"><strong>Fere automatically:</strong> detects you lack funds on Base, finds your ETH on Mainnet, selects the optimal bridge, bundles the bridge and swap into one flow, estimates time (~2 min), and asks for confirmation before executing.</div>
+  </div>
+
+  <h2>Gasless by Default</h2>
+  <p>One of Fere's most loved features. You don't need to hold native gas tokens on every chain you want to trade on. Fere handles gas abstraction through the CDP wallet infrastructure — meaning you can trade on Base, Monad, or Arbitrum without first buying and bridging gas tokens.</p>
+
+  <h2>Cross-Chain in Action</h2>
+  <div class="sim-terminal" id="bridge-sim">
+    <div class="sim-header">
+      <div class="sim-header-left"><div class="dot"></div><span>Cross-Chain Agent</span></div>
+      <div class="sim-status idle" id="bridge-sim-status">Ready</div>
+    </div>
+    <div class="sim-prompt" id="bridge-sim-prompt" style="display:none;">
+      <label>Your Message</label>
+      <div class="sim-prompt-text"><span id="bridge-sim-typing"></span><span class="typing-cursor" id="bridge-cursor"></span></div>
+    </div>
+    <div class="sim-logs" id="bridge-sim-logs" style="display:none;"><label>Agent Execution Log</label></div>
+    <div class="sim-play-overlay" id="bridge-play" onclick="playSim('bridge')">
+      <div class="play-btn"><i class="fa-solid fa-play"></i> Watch a cross-chain bridge and swap</div>
+    </div>
+  </div>
+
+  <div class="callout callout-green">
+    <h4>Bridge Times</h4>
+    <p>Fere always estimates completion time before you confirm. Typical ranges: 30 seconds (Base ↔ Optimism) to ~5 minutes (Ethereum → Solana). The agent picks the fastest reliable route automatically.</p>
+  </div>
+`,
+
+/* ══════════ WALLET ══════════ */
+wallet: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-wallet"></i> Your Wallet</div>
+  <h1 class="animate-in delay-1">Coinbase-Grade <em>Security.</em></h1>
+  <p class="subtitle animate-in delay-2">Your wallet is always visible on the right side of the screen — showing your balance, assets, and active orders in real time. Under the hood, it's powered by Coinbase's most advanced wallet infrastructure.</p>
+
+  <h2>What You See</h2>
+  <p>The wallet panel is always visible on the right side of the Fere interface. At a glance, you can see:</p>
+  <ul>
+    <li><strong>Total balance</strong> — Your aggregate holdings across all chains</li>
+    <li><strong>Wallet addresses</strong> — Both your EVM address (for Base, Ethereum, Polygon, etc.) and your Solana address, each with a <i class="fa-solid fa-key" style="color:var(--accent-warm); font-size:11px;"></i> key icon to export your private key</li>
+    <li><strong>Add Funds</strong> — One-click deposit into your wallet</li>
+    <li><strong>Assets tab</strong> — Your token holdings with USD values, organized by chain. A "Hide dust" checkbox filters out tiny balances under $0.05</li>
+    <li><strong>Limit Orders tab</strong> — All your active limit orders in one place</li>
+    <li><strong>TP/SL Orders</strong> — Active take-profit and stop-loss positions appear right under the relevant token</li>
+    <li><strong>Supported chains</strong> — Shown at the bottom of the wallet panel</li>
+  </ul>
+
+  <div class="security-visual animate-in delay-3">
+    <div class="security-icon-big"><i class="fa-solid fa-lock"></i></div>
+    <div>
+      <h3 style="margin-bottom:8px;">Powered by Coinbase CDP Server Wallets</h3>
+      <p style="margin:0;">Every Fere wallet is a Coinbase Developer Platform Server Wallet — the same infrastructure trusted by the world's largest crypto exchange. Private keys live inside Trusted Execution Environments (TEEs) and never leave the secure enclave.</p>
+    </div>
+  </div>
+
+  <h2>You Own Your Wallet</h2>
+  <p>This is critical: <strong>your wallet is fully owned by you.</strong> Next to each wallet address in the panel, you'll see a <i class="fa-solid fa-key" style="color:var(--accent-warm); font-size:11px;"></i> key icon. Click it to reveal and export your private key. You can then import that key into any external wallet like MetaMask or Phantom — meaning your funds are never locked inside Fere.</p>
+
+  <div class="callout callout-green">
+    <h4><i class="fa-solid fa-key" style="margin-right:6px;"></i> Full Key Ownership</h4>
+    <p>Your private key is yours. Export it anytime and use it in MetaMask (for EVM chains) or Phantom (for Solana). Fere is non-custodial — you can always access your funds independently. See the <a href="javascript:showPage('faq')">FAQ</a> for step-by-step export instructions.</p>
+  </div>
+
+  <h2>What Makes This Secure</h2>
+  <ul>
+    <li><strong>One wallet, every chain</strong> — A single wallet identity works across all supported EVM chains and Solana</li>
+    <li><strong>Keys never exposed</strong> — Private keys are generated and stored inside hardware-isolated enclaves. Not even Coinbase or Fere can access them</li>
+    <li><strong>Policy enforcement</strong> — Transaction rules like spend limits and address allowlists are enforced at the enclave level</li>
+    <li><strong>Sub-200ms signing</strong> — Wallet creation takes under 500ms. Transaction signing under 200ms</li>
+    <li><strong>Non-custodial</strong> — Fere cannot seize, freeze, or move your funds. Period</li>
+  </ul>
+
+  <div class="partner-bar" style="margin-top:36px;">
+    <span>Infrastructure</span>
+    <div class="partner-logos">
+      <div class="partner-logo">◆ Coinbase CDP</div>
+      <div class="partner-logo">◇ Trusted Execution (TEE)</div>
+      <div class="partner-logo">◆ AWS Nitro Enclaves</div>
+    </div>
+  </div>
+`,
+
+/* ══════════ CREDITS ══════════ */
+credits: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-coins"></i> Credits</div>
+  <h1 class="animate-in delay-1">Powering Your <em>Agent.</em></h1>
+  <p class="subtitle animate-in delay-2">Every action Fere takes on your behalf costs credits. Think of credits as the fuel that powers your AI agent — you get a generous free allocation, can claim daily refills, and purchase more when you need them.</p>
+
+  <h2>How Credits Work</h2>
+  <p>Credits are the currency of the Fere platform. When Fere runs a query, scans the market, or executes a scheduled task, it costs credits. Your current credit balance is always visible in the <strong>top-right corner</strong> of the screen.</p>
+
+  <table class="compare-table">
+    <thead><tr><th>Action</th><th class="hl">Credit Cost</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">Fere AI Agent Query</td><td>15 credits per message</td></tr>
+      <tr><td class="hl">Market Pulse (Scheduled)</td><td>70 credits per execution</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Free Credits</h2>
+  <p>Fere gives you credits for free so you can start using the platform immediately — no credit card required.</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+      <h4>Signup Bonus</h4>
+      <p>Every new user receives <strong>200 credits</strong> the moment they create an account. Enough to explore every feature.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-calendar-check"></i></div>
+      <h4>Daily Claim</h4>
+      <p>Claim <strong>250 free credits</strong> every 24 hours. Just click the claim button — no strings attached.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+      <h4>Balance Cap</h4>
+      <p>Free daily claims are available when your balance is under <strong>1,000 credits</strong>. This encourages active usage over hoarding.</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+      <h4>24h Cooldown</h4>
+      <p>One claim per 24-hour window. The counter resets exactly 24 hours after your last claim.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-green">
+    <h4>The Math</h4>
+    <p>With 250 free credits per day at 15 credits per query, you get roughly <strong>16 free agent conversations daily</strong> — more than enough for active trading and research. Power users who need more can purchase additional credits.</p>
+  </div>
+
+  <h2>Purchasing Credits</h2>
+  <p>Need more? You can buy credits directly with crypto from your Fere wallet. Click <strong>"Add Credits"</strong> from the profile menu (top-right avatar) or the credits display.</p>
+
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">1</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Open Recharge</h4><p>Click your profile avatar (top-right) → "Add Credits" to open the Recharge Credits dialog.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">2</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Enter Amount</h4><p>Enter the USD amount you want to spend. The conversion rate is <strong>$1 = 100 credits</strong>.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">3</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Select Payment Token</h4><p>Choose which chain (Monad, Solana, Base) and token to pay with. Search for any token on the selected chain.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">4</div></div>
+      <div class="step-content"><h4>Confirm & Run</h4><p>Review the generated transaction and click "Run Recipe" to complete the purchase. Credits are added instantly.</p></div>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    <h4>Pay With Any Token</h4>
+    <p>You're not limited to stablecoins. You can recharge credits using any token on any supported chain — ETH, SOL, MON, memecoins, anything in your wallet. Fere handles the conversion.</p>
+  </div>
+`,
+
+/* ══════════ REFERRAL ══════════ */
+referral: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-gift"></i> Refer & Earn</div>
+  <h1 class="animate-in delay-1">Share Fere. <em>Get Rewarded.</em></h1>
+  <p class="subtitle animate-in delay-2">Invite friends to Fere and earn credits for every person who signs up with your referral code. It's the easiest way to keep your agent fueled.</p>
+
+  <h2>How It Works</h2>
+  <p>Open <strong>Refer and Earn</strong> from the left sidebar. You'll see your unique referral codes — short alphanumeric codes you can share with anyone. When someone signs up using your code, you earn <strong>200 credits</strong> per successful invite.</p>
+
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">1</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Copy Your Code</h4><p>You get multiple unique referral codes. Copy any one using the clipboard button next to it.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">2</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>Share It</h4><p>Send the code to friends, post it on social media, share it in your group chats — wherever you like.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">3</div><div class="step-connector"></div></div>
+      <div class="step-content"><h4>They Sign Up</h4><p>Your friend creates a Fere account and enters your referral code during signup.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot">4</div></div>
+      <div class="step-content"><h4>You Both Earn</h4><p>You receive 200 credits. No cap on referrals — the more people you bring, the more you earn.</p></div>
+    </div>
+  </div>
+
+  <div class="callout callout-warm">
+    <h4>Referral Leaderboard</h4>
+    <p>The Refer and Earn page also shows a <strong>leaderboard ranked by credits earned</strong> from referrals. Top referrers are displayed publicly — compete for the top spot and earn bragging rights along with a stockpile of credits.</p>
+  </div>
+
+  <h2>Quick Math</h2>
+  <p>Each referral earns you <strong>200 credits</strong> — that's $2 worth, or roughly 13 free AI agent conversations. Refer 5 friends and you've earned 1,000 credits without spending a cent. It's the fastest way to build your balance.</p>
+`,
+
+/* ══════════ POINTS ══════════ */
+points: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-trophy"></i> Points & Leaderboard</div>
+  <h1 class="animate-in delay-1">Use Fere. <em>Earn Points.</em></h1>
+  <p class="subtitle animate-in delay-2">Points are a measure of your activity on Fere. The more you use the platform, the more points you accumulate — and the higher you climb on the leaderboard. Points refresh every Monday.</p>
+
+  <h2>How Points Work</h2>
+  <p>Points are earned passively just by using Fere. Every trade, every chat, every Market Pulse run — it all counts. Open <strong>Points & Leaderboard</strong> from the left sidebar to see your stats.</p>
+
+  <h2>What You See</h2>
+  <p>The Points dashboard gives you a clear snapshot of your standing:</p>
+  <ul>
+    <li><strong>Total</strong> — Your all-time accumulated points</li>
+    <li><strong>Last Week</strong> — Points earned in the previous weekly cycle</li>
+    <li><strong>Rank</strong> — Your current position among all users (e.g., Top 10%)</li>
+    <li><strong>Streak</strong> — How many consecutive weeks you've been active, shown as a progress bar</li>
+  </ul>
+
+  <h2>How to Earn Points</h2>
+  <p>Points are awarded automatically based on your platform activity. Here's exactly how each action is rewarded:</p>
+
+  <table class="compare-table">
+    <thead><tr><th>Activity</th><th class="hl">Points Earned</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">Referral Reward</td><td>5 points per referral you make</td></tr>
+      <tr><td class="hl">Referred Bonus</td><td>5 points when you're referred by someone</td></tr>
+      <tr><td class="hl">Market Pulse Run</td><td>1 point per summary generated</td></tr>
+      <tr><td class="hl">On-Chain Transaction</td><td>1× per USD of transaction value</td></tr>
+      <tr><td class="hl">Credit Purchase</td><td>1× per USD spent on credits</td></tr>
+      <tr><td class="hl">Chat</td><td>0.20 points per conversation</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <h4>Weekly Refresh</h4>
+    <p>Points reset every Monday. This keeps the leaderboard competitive and gives everyone a fresh chance to climb the ranks each week. Your all-time total is tracked separately, so your lifetime contribution is never lost.</p>
+  </div>
+
+  <h2>Points Breakdown</h2>
+  <p>On the Points page, you'll see a <strong>Points Breakdown</strong> section showing exactly where your points came from — a visual bar chart with categories like On-Chain Transaction, Market Pulse, and Chat. Click the <strong>"How to Earn Points"</strong> button for the full breakdown modal.</p>
+
+  <h2>Leaderboard</h2>
+  <p>Below the breakdown, the <strong>Leaderboard</strong> shows the top 30 performers for the current week. Your rank, username (partially masked for privacy), and point total are displayed. If you're in the top positions, you'll see gold, silver, and bronze medals next to your rank.</p>
+
+  <div class="callout callout-warm">
+    <h4>Why Points Matter</h4>
+    <p>Points are more than just a vanity metric. Active users who consistently rank high on the leaderboard are building a track record of platform engagement — and that will matter as Fere introduces new reward tiers, airdrops, and exclusive features for top contributors. Start building your streak now.</p>
+  </div>
+`,
+
+/* ══════════ FAQ ══════════ */
+faq: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-circle-question"></i> Help Center</div>
+  <h1 class="animate-in delay-1">Frequently Asked <em>Questions.</em></h1>
+  <p class="subtitle animate-in delay-2">Everything you need to know about using Fere AI — from wallet ownership to trading features.</p>
+
+  <h2>Wallet & Security</h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Do I own my wallet? Can Fere access my funds?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p><strong>Yes, you fully own your wallet.</strong> Fere uses Coinbase CDP Server Wallets, which are non-custodial. Your private keys live inside a Trusted Execution Environment (TEE) — a hardware-isolated enclave that neither Fere nor Coinbase can access.</p>
+      <p>You can export your private key at any time using the <strong><i class="fa-solid fa-key" style="color:var(--accent-warm); font-size:11px;"></i> key icon</strong> next to your wallet address in the wallet panel. Once exported, you can import it into any external wallet like MetaMask or Phantom and access your funds completely independently of Fere.</p>
+      <p>Fere cannot seize, freeze, move, or view your private key. This is enforced by architecture, not just policy.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How do I export my private key to MetaMask?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Use this to move your <strong>EVM wallet</strong> (Base, Ethereum, Polygon, Arbitrum, etc.) to MetaMask:</p>
+      <div class="faq-steps">
+        <strong>Step 1:</strong> In Fere, find your EVM wallet address in the right panel (starts with 0x). Click the <i class="fa-solid fa-key" style="color:var(--accent-warm); font-size:11px;"></i> key icon next to it to reveal your private key. Copy it.<br><br>
+        <strong>Step 2:</strong> Open MetaMask (browser extension or mobile app).<br><br>
+        <strong>Step 3:</strong> Click the account selector (circle icon at the top).<br><br>
+        <strong>Step 4:</strong> Select <strong>"Add account or hardware wallet"</strong>, then choose <strong>"Import account"</strong>.<br><br>
+        <strong>Step 5:</strong> Make sure "Private Key" is selected as the type. Paste your key and click <strong>Import</strong>.<br><br>
+        Your Fere wallet will now appear in MetaMask with an "Imported" label. You can use both Fere and MetaMask to access the same funds.
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How do I export my private key to Phantom?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Use this to move your <strong>Solana wallet</strong> to Phantom:</p>
+      <div class="faq-steps">
+        <strong>Step 1:</strong> In Fere, find your Solana wallet address in the right panel (starts with a non-0x string). Click the <i class="fa-solid fa-key" style="color:var(--accent-warm); font-size:11px;"></i> key icon to reveal your Solana private key. Copy it.<br><br>
+        <strong>Step 2:</strong> Open Phantom (browser extension or mobile app).<br><br>
+        <strong>Step 3:</strong> Click your profile avatar in the upper-left corner.<br><br>
+        <strong>Step 4:</strong> Click <strong>"Add / Connect Wallet"</strong> (or the pencil icon on mobile), then select <strong>"Import Private Key"</strong>.<br><br>
+        <strong>Step 5:</strong> Enter a name for the account, select <strong>Solana</strong> as the network, paste your private key, and click <strong>Import</strong>.<br><br>
+        Your Fere Solana wallet will now appear in Phantom. You can use both apps to access the same funds.
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">What is "Hide dust" in the wallet?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>The <strong>"Hide dust (&lt;$0.05)"</strong> checkbox in your wallet panel hides tokens with very small balances — typically leftover fragments from trades. This keeps your asset list clean and focused on your meaningful holdings. Uncheck it to see everything.</p>
+    </div>
+  </div>
+
+  <h2>Trading</h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">What happens if a trade fails?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Fere has <strong>intelligent retries and fallback routing</strong> built in — so most failures that would stop a normal wallet are handled automatically. If a route fails due to slippage or liquidity, Fere retries with an alternative path before giving up. If it truly can't execute (e.g., a chain is down), it tells you exactly why and suggests what to do next. No funds leave your wallet on a failed transaction — everything is reverted on-chain.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">What is TP/SL and how does it work?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p><strong>TP (Take-Profit)</strong> automatically sells your token when it rises to a price you set — locking in gains. <strong>SL (Stop-Loss)</strong> automatically sells when it drops to a price you set — limiting losses.</p>
+      <p>What makes Fere special is that you can set TP/SL on <strong>any token</strong>, including obscure memecoins and microcaps that other platforms can't support. Just tell Fere: <em>"Set TP at +50% and SL at -20% on my BRETT position"</em> and it's done. Active TP/SL orders appear right under the token in your wallet panel.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How do limit orders work on Fere?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Limit orders let you set a price at which you want to buy or sell a token. Once the market reaches your target price, Fere executes the trade automatically. You can view all your active limit orders in the <strong>Limit Orders</strong> tab of your wallet panel.</p>
+      <p>Unlike centralized exchanges, Fere can place limit orders on any DEX token — even ones that aren't listed anywhere else.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Does Fere trade automatically?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p><strong>Yes.</strong> When you ask Fere to execute a trade, it automatically finds the best route with the lowest slippage and executes. Unlike manual wallet-based trading, Fere has <strong>built-in retries and fallbacks</strong> — if a route fails (common during high-traffic periods or token hype), the agent automatically retries with an alternative route instead of just showing you an error.</p>
+      <p>This is a major advantage over traditional wallets, where failed transactions during peak demand simply fail and you have to start over. Fere handles the retry logic intelligently so you don't miss opportunities.</p>
+      <p><strong>One caveat:</strong> Fere can't fix chain-level performance issues. If a blockchain itself is congested or down, retries won't help — but Fere will tell you exactly what's happening.</p>
+      <p>For <strong>scheduled strategies</strong>, the agent executes autonomously based on the conditions you set — that's the whole point of automation. You can pause or stop any schedule at any time from the Schedules tab.</p>
+    </div>
+  </div>
+
+  <h2>Schedules & Recipes</h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Can I stop a schedule once it's running?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p><strong>Yes, absolutely.</strong> Go to the <strong>Schedules</strong> tab in the left sidebar, find the schedule you want to stop, and pause or cancel it. It stops immediately — no lock-in, no waiting for the next cycle to complete. You can also restart it later if you change your mind.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">What's the difference between a recipe and a schedule?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>A <strong>recipe</strong> is a pre-built, one-click workflow — think of it as a template that runs once. You configure it, hit run, and get results.</p>
+      <p>A <strong>schedule</strong> is any instruction (including custom ones you write yourself) set to run repeatedly on a timer — every hour, every day, etc. Schedules are more powerful because they're autonomous and ongoing, and the agent thinks fresh each cycle.</p>
+    </div>
+  </div>
+
+  <h2>Credits & Rewards</h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How much does it cost to use Fere?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Each AI agent conversation costs <strong>15 credits</strong>. A scheduled Market Pulse execution costs <strong>70 credits</strong>. You get 200 credits free at signup and can claim 250 more every 24 hours (up to a 1,000 balance cap). The conversion rate for purchased credits is <strong>$1 = 100 credits</strong>, so a single agent query costs about $0.15.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How do I get free credits?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Three ways: <strong>(1)</strong> You get 200 credits free when you sign up. <strong>(2)</strong> You can claim 250 credits every 24 hours as long as your balance is below 1,000. <strong>(3)</strong> Refer friends using your referral code — you earn 200 credits per successful invite with no cap.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">What's the daily credit cap?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>You can claim your free 250 daily credits as long as your current balance is <strong>below 1,000 credits</strong>. If you have 1,000 or more, the claim is blocked until you use some. This is designed to keep credits flowing to active users rather than being stockpiled.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How do points differ from credits?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p><strong>Credits</strong> are the currency you spend to use Fere's features — they're consumed when the agent runs queries or scheduled tasks. <strong>Points</strong> are a reward metric that tracks your activity level. You earn points passively by using the platform, and they determine your position on the weekly leaderboard. Points refresh every Monday; credits don't expire.</p>
+    </div>
+  </div>
+
+  <h2>General</h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">What are the trending topic pills below the search bar?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Those are <strong>AI-generated suggestions</strong> based on what's happening in crypto right now — things like "Liquidation & Fear Correlation" or "Dormant Whale BTC Buys". Click any one to start a conversation about that topic. They're updated regularly to reflect the current market narrative.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Which chains does Fere support?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Fere currently supports <strong>8 chains</strong>: Ethereum, Base, Solana, Berachain, Monad, Optimism, Polygon, and Arbitrum. You can see all supported chains at the bottom of your wallet panel. New chains are added regularly.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How do I add funds to my wallet?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Click the <strong>"Add Funds"</strong> button at the top of your wallet panel. You can deposit crypto directly to your Fere wallet addresses — send EVM tokens to your 0x address or SOL to your Solana address. Both addresses are visible in the wallet panel and can be copied with one click.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Is my trading data private?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p><strong>Yes.</strong> Your strategies, chat history, and trading activity are encrypted at rest and never shared with third parties. Fere does not use your data to train AI models unless you explicitly opt in via the Rewards Program. Your alpha stays private.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Can I see my past conversations?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>Yes. All your past conversations are saved and listed in the left sidebar under <strong>Chats</strong>. Click any conversation to reopen it and continue where you left off. This makes it easy to reference previous trades, strategies, or analysis.</p>
+    </div>
+  </div>
+`
+    };
+
+    /* ═══ PAGE SWITCHING ═══ */
+    function showPage(pageId) {
+      clearSims();
+      container.classList.add('fade-out');
+      setTimeout(() => {
+        container.innerHTML = pages[pageId] || '';
+        container.classList.remove('fade-out');
+        container.style.animation = 'none';
+        container.offsetHeight; /* reflow */
+        container.style.animation = '';
+        mainScroll.scrollTop = 0;
+        document.querySelectorAll('.nav-item').forEach(item => {
+          item.classList.remove('active');
+          if (item.dataset.page === pageId) item.classList.add('active');
+        });
+        /* Close mobile nav after selection */
+        document.querySelector('.sidebar').classList.remove('open');
+        document.querySelector('.mobile-overlay').classList.remove('open');
+      }, 50);
+    }
+
+    /* ═══ FAQ TOGGLE ═══ */
+    function toggleFaq(el) {
+      el.classList.toggle('open');
+    }
+
+    /* ═══ SIMULATION ENGINE ═══ */
+    const simConfigs = {
+      overview: {
+        text: "Scan Base chain for tokens with $500k-$2M MC. Check social sentiment. If >80/100, buy $5 ETH.",
+        steps: [
+          { text: "Parsing Intent: Multi-step Execution Strategy", type: "info" },
+          { text: "Step 1: Scanning Base Chain (MC: $500k-$2M)...", type: "processing" },
+          { text: "Found 14 candidates. Filtering by Volume...", type: "processing" },
+          { text: "Selected: VIRTUAL, AERO, BRETT", type: "success" },
+          { text: "Step 2: Social Analysis (Twitter/Farcaster)...", type: "processing" },
+          { text: "VIRTUAL: Sentiment 88/100 — Strong Buy Signal", type: "success" },
+          { text: "AERO: Sentiment 72/100 — Below threshold, skipping", type: "info" },
+          { text: "Step 3: Executing trade on VIRTUAL...", type: "processing" },
+          { text: "Route: Uniswap V3 → 5 ETH → VIRTUAL", type: "processing" },
+          { text: "✓ Transaction Confirmed: 0x8a7...c91f", type: "success" },
+          { text: "Strategy Complete. 1 trade executed.", type: "success" }
+        ]
+      },
+      agent: {
+        text: "Set a limit order: buy $200 of BRETT if it drops 15% from current price. Set TP at +40%, SL at -20%.",
+        steps: [
+          { text: "Parsing Intent: Conditional Limit Order + TP/SL", type: "info" },
+          { text: "Fetching current BRETT price on Base...", type: "processing" },
+          { text: "Current: $0.1847 — Target entry: $0.1570 (-15%)", type: "info" },
+          { text: "Creating plan with 3 task(s)", type: "info" },
+          { text: "Task 1: Place limit order — $200 USDC → BRETT @ $0.1570", type: "processing" },
+          { text: "Task 2: Set Take-Profit — sell at $0.2198 (+40%)", type: "processing" },
+          { text: "Task 3: Set Stop-Loss — sell at $0.1256 (-20%)", type: "processing" },
+          { text: "✓ Limit order placed. Monitoring price...", type: "success" },
+          { text: "✓ TP/SL armed. Agent will execute autonomously.", type: "success" }
+        ]
+      },
+      bridge: {
+        text: "Bridge my Monad holdings to Base and swap everything to USDC",
+        steps: [
+          { text: "Parsing Intent: Cross-chain bridge + swap", type: "info" },
+          { text: "Scanning Monad wallet...", type: "processing" },
+          { text: "Found: 15.2 MON ($7.45)", type: "info" },
+          { text: "Created plan with 3 task(s)", type: "info" },
+          { text: "Task 1: Get MON token address on Monad", type: "processing" },
+          { text: "✓ Resolved", type: "success" },
+          { text: "Task 2: Get USDC address on Base", type: "processing" },
+          { text: "✓ Resolved", type: "success" },
+          { text: "Task 3: Bridge & Swap MON → USDC via Across", type: "processing" },
+          { text: "Bridging in progress... ETA ~90 seconds", type: "processing" },
+          { text: "✓ Bridge complete. Swapping to USDC...", type: "success" },
+          { text: "✓ 7.29 USDC received on Base", type: "success" },
+          { text: "Tx: 0x8f7...3d159 — All tasks complete.", type: "success" }
+        ]
+      }
+    };
+
+    function playSim(id) {
+      const config = simConfigs[id];
+      if (!config) return;
+
+      // Hide play button, show sim areas
+      const playEl = document.getElementById(`${id}-play`);
+      const promptEl = document.getElementById(`${id}-sim-prompt`);
+      const logsEl = document.getElementById(`${id}-sim-logs`);
+      const statusEl = document.getElementById(`${id}-sim-status`);
+      const typingEl = document.getElementById(`${id}-sim-typing`);
+      const cursorEl = document.getElementById(`${id}-cursor`);
+
+      if (playEl) playEl.style.display = 'none';
+      if (promptEl) promptEl.style.display = 'block';
+      if (logsEl) { logsEl.style.display = 'block'; logsEl.innerHTML = '<label>Agent Execution Log</label>'; }
+      if (typingEl) typingEl.textContent = '';
+      if (cursorEl) cursorEl.style.display = '';
+      if (statusEl) { statusEl.textContent = 'Idle'; statusEl.className = 'sim-status idle'; }
+
+      let i = 0;
+      function typeChar() {
+        if (i < config.text.length) {
+          typingEl.textContent += config.text[i]; i++;
+          simTimeouts.push(setTimeout(typeChar, 25));
+        } else {
+          if (cursorEl) cursorEl.style.display = 'none';
+          statusEl.textContent = 'Executing';
+          statusEl.className = 'sim-status running';
+          simTimeouts.push(setTimeout(() => runSteps(id, 0), 600));
+        }
+      }
+      simTimeouts.push(setTimeout(typeChar, 400));
+    }
+
+    function runSteps(id, index) {
+      const config = simConfigs[id];
+      const logsEl = document.getElementById(`${id}-sim-logs`);
+      const statusEl = document.getElementById(`${id}-sim-status`);
+      if (index >= config.steps.length) {
+        statusEl.textContent = 'Complete';
+        statusEl.className = 'sim-status complete';
+        return;
+      }
+      const step = config.steps[index];
+      const div = document.createElement('div');
+      div.className = `sim-log-line ${step.type}`;
+      const icons = { processing: '⟳', success: '✓', info: '•' };
+      div.innerHTML = `<span class="log-icon">${icons[step.type] || '•'}</span><span>${step.text}</span>`;
+      logsEl.appendChild(div);
+      logsEl.scrollTop = logsEl.scrollHeight;
+      const delay = step.type === 'processing' ? 1000 : step.type === 'success' ? 600 : 500;
+      simTimeouts.push(setTimeout(() => runSteps(id, index + 1), delay));
+    }
+
+    /* ═══ MOBILE NAV ═══ */
+    function toggleMobileNav() {
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.querySelector('.mobile-overlay');
+      const icon = document.getElementById('mobile-icon');
+      const isOpen = sidebar.classList.toggle('open');
+      overlay.classList.toggle('open', isOpen);
+      icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    }
+
+    /* ═══ THEME TOGGLE ═══ */
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      document.getElementById('theme-label').textContent = isLight ? 'Dark Mode' : 'Light Mode';
+      try { localStorage.setItem('fere-theme', isLight ? 'light' : 'dark'); } catch(e) {}
+    }
+    (function() {
+      try {
+        if (localStorage.getItem('fere-theme') === 'light') {
+          document.body.classList.add('light');
+          setTimeout(() => { document.getElementById('theme-label').textContent = 'Dark Mode'; }, 0);
+        }
+      } catch(e) {}
+    })();
+
+    window.addEventListener('load', () => showPage('overview'));
+  </script>
+</body>
 </html>
