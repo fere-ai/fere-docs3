@@ -519,6 +519,13 @@
     }
     .mobile-overlay.open { opacity: 1; }
 
+    /* ═══ LEGAL PAGES (sidebar hidden, full-width) ═══ */
+    body.legal-route .sidebar,
+    body.legal-route .mobile-hamburger,
+    .sidebar.legal-hidden { display: none !important; }
+    .sidebar.legal-hidden ~ .mobile-hamburger { display: none !important; }
+    .content-area.legal-full { margin: 0 auto; max-width: 780px; }
+
     @media (max-width: 900px) {
       .sidebar {
         display: flex; position: fixed; left: -280px;
@@ -539,6 +546,9 @@
 </head>
 
 <body>
+  <script>
+    (function(){var h=location.hash.replace('#','');if(h==='terms'||h==='privacy'||h==='security-policy'){document.body.classList.add('legal-route');}})();
+  </script>
   <!-- ═══ SIDEBAR ═══ -->
   <aside class="sidebar">
     <div class="sidebar-logo" onclick="showPage('overview')">
@@ -1437,11 +1447,238 @@ faq: `
     </div>
   </div>
 `
+,
+
+/* ══════════ TERMS OF SERVICE ══════════ */
+terms: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-file-contract"></i> Legal</div>
+  <h1 class="animate-in delay-1">Terms of <em>Service.</em></h1>
+  <p class="animate-in delay-2" style="font-size:0.82rem; color:var(--text-muted);">Updated on: 18 July 2024</p>
+
+  <p>Welcome to FereAI. These Terms of Use ("Terms") govern your use of our AI-powered cryptocurrency chatbot ("Service"). By accessing or using our Service, you agree to comply with and be bound by these Terms. If you do not agree to these Terms, please do not use our Service.</p>
+
+  <h2>Eligibility</h2>
+  <p>By using our Service, you represent and warrant that you are at least 18 years old and have the legal capacity to enter into these Terms. If you are using our Service on behalf of an organization, you represent and warrant that you have the authority to bind that organization to these Terms.</p>
+
+  <h2>Use of Service</h2>
+
+  <h3>1. License</h3>
+  <p>We grant you a limited, non-exclusive, non-transferable, and revocable license to use our Service for personal, non-commercial purposes, subject to these Terms.</p>
+
+  <h3>2. Restrictions</h3>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Use our Service for any illegal or unauthorized purpose.</li>
+    <li>Interfere with or disrupt the integrity or performance of our Service.</li>
+    <li>Attempt to gain unauthorized access to our systems or networks.</li>
+    <li>Collect or store personal data about other users without their consent.</li>
+    <li>Use our Service to create, share, or distribute content that violates our Content Policy.</li>
+  </ul>
+
+  <h2>User Accounts</h2>
+  <p>To access certain features of our Service, you may be required to create an account. You agree to:</p>
+  <ul>
+    <li>Provide accurate, current, and complete information during the registration process.</li>
+    <li>Maintain the security of your account by protecting your password and restricting access to your account.</li>
+    <li>Notify us immediately of any unauthorized use of your account or any other breach of security.</li>
+    <li>Accept responsibility for all activities that occur under your account.</li>
+  </ul>
+
+  <h2>Intellectual Property</h2>
+
+  <h3>1. Ownership</h3>
+  <p>All intellectual property rights in our Service, including but not limited to the software, text, graphics, and logos, are owned by or licensed to us. You agree not to use, reproduce, or distribute any content from our Service without our prior written permission.</p>
+
+  <h3>2. User Content</h3>
+  <p>You retain ownership of any intellectual property rights that you hold in the content you create using our Service. By sharing content on our Service, you grant us a worldwide, non-exclusive, royalty-free license to use, host, store, reproduce, modify, create derivative works, communicate, publish, and distribute such content.</p>
+
+  <h2>Financial Information and Transactions</h2>
+
+  <h3>1. Accuracy of Information</h3>
+  <p>While we strive to provide accurate and up-to-date information, we do not guarantee the accuracy, completeness, or timeliness of any information on our Service. You acknowledge that the information provided by our Service is for informational purposes only and should not be construed as financial advice.</p>
+
+  <h3>2. Transactions</h3>
+  <p>Any transactions conducted using our Service are at your own risk. You are responsible for ensuring the security and validity of your transactions. We are not responsible for any losses or damages resulting from your use of our Service for cryptocurrency transactions.</p>
+
+  <h2>Disclaimer of Warranties</h2>
+  <p>Our Service is provided on an "as is" and "as available" basis. We make no representations or warranties of any kind, express or implied, regarding the operation or availability of our Service, or the information, content, or materials included therein. To the fullest extent permitted by law, we disclaim all warranties, express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+
+  <h2>Limitation of Liability</h2>
+  <p>To the fullest extent permitted by law, in no event shall we be liable for any direct, indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your use of or inability to use our Service; (ii) any unauthorized access to or use of our servers and/or any personal information stored therein; (iii) any interruption or cessation of transmission to or from our Service; (iv) any bugs, viruses, trojan horses, or the like that may be transmitted to or through our Service by any third party; or (v) any errors or omissions in any content.</p>
+
+  <h2>Indemnification</h2>
+  <p>You agree to indemnify, defend, and hold harmless FereAI, its officers, directors, employees, agents, and affiliates, from and against any and all claims, liabilities, damages, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising from or relating to your use of our Service or violation of these Terms.</p>
+
+  <h2>Changes to These Terms</h2>
+  <p>We may update our Terms of Use from time to time. We will notify you of any changes by posting the new Terms of Use on this page. You are advised to review these Terms periodically for any changes. Changes to these Terms are effective when they are posted on this page.</p>
+
+  <h2>Termination</h2>
+  <p>We reserve the right to suspend or terminate your access to our Service at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users of our Service, us, or third parties, or for any other reason.</p>
+
+  <h2>Governing Law</h2>
+  <p>These Terms shall be governed and construed in accordance with the laws of the Cayman Islands, without regard to its conflict of law principles. You agree to submit to the personal jurisdiction of the courts located in the Cayman Islands for the purpose of litigating all such claims or disputes.</p>
+`,
+
+/* ══════════ PRIVACY POLICY ══════════ */
+privacy: `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-shield-halved"></i> Legal</div>
+  <h1 class="animate-in delay-1">Privacy <em>Policy.</em></h1>
+  <p class="animate-in delay-2" style="font-size:0.82rem; color:var(--text-muted);">Updated on: 18 July 2024</p>
+
+  <p>Welcome to FereAI. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services. Please read this policy carefully to understand our practices regarding your personal data.</p>
+
+  <p>When you use the website <a href="https://www.fereai.xyz" target="_blank">https://www.fereai.xyz</a> (hereinafter referred to as the "Service"), and/or our bot on Telegram, we may collect personal data about you. The purpose of this policy is to inform you about how we process your personal data in compliance with Regulation (EU) 2016/679 of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (hereinafter the "GDPR").</p>
+
+  <h2>1. Who is the data controller?</h2>
+  <p>The data controller is M6O9Z Foundation, an Exempted Limited Guarantee Foundation Company incorporated in the Cayman Islands with Limited Liability, having its offices at Intershore Consult (Cayman) Ltd. Suite 303, George Town Financial Center, 90 Fort Street, George Town, Grand Cayman, Cayman Islands.</p>
+
+  <h2>2. What data we collect</h2>
+  <p>Personal data is data that identifies an individual directly or indirectly, in particular by reference to an identifier such as a name.</p>
+  <p>We may collect the following personal data:</p>
+  <ul>
+    <li>Identification data (e.g. full name, email address, telephone number)</li>
+    <li>Login data (e.g. logs)</li>
+    <li>Browsing data (e.g. IP address, browser type, operating system)</li>
+    <li>Usage data (e.g. pages visited, time spent on the website)</li>
+    <li>Economic and Financial Data (e.g. payment data, transaction data)</li>
+  </ul>
+  <p>We inform you, when collecting your personal data, whether some of these data are mandatory or optional. Mandatory data are indicated with an asterisk.</p>
+
+  <h2>3. On what legal basis, for what purposes and for how long do we keep your personal data?</h2>
+
+  <div class="callout" style="margin-bottom:16px;">
+    <h4 style="margin-bottom:6px;">To provide you with our services available on our Website and our API</h4>
+    <p style="margin:0 0 8px;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Legal Basis</strong><br>Performance of a contract to which you are party and/or taking steps at your request prior to entering into a contract.</p>
+    <p style="margin:0;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Retention Period</strong><br>Your personal data are retained for the duration of your account. If your account is inactive for a period of 2 years, we will ask you, one month before the end of such period, whether you would like to keep your account. In case you won't answer, your account will be deleted. In addition, personal data may be archived for probationary purposes for a period of 5 years.</p>
+  </div>
+
+  <div class="callout" style="margin-bottom:16px;">
+    <h4 style="margin-bottom:6px;">To perform operations related to contracts, invoices, and customer relationship management</h4>
+    <p style="margin:0 0 8px;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Legal Basis</strong><br>Performance of a contract to which you are party.</p>
+    <p style="margin:0;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Retention Period</strong><br>Personal data are retained for the duration of our business relationship. Invoices are archived for a period of 10 years. Data related to your credit card are retained by our payment service provider until full payment. The CVV2 listed on your credit card details will not be stored. In addition, all data relating to your transactions (except data related to your credit card) are archived for probationary purposes for a period of 5 years.</p>
+  </div>
+
+  <div class="callout" style="margin-bottom:16px;">
+    <h4 style="margin-bottom:6px;">To create a database of customers and prospects</h4>
+    <p style="margin:0 0 8px;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Legal Basis</strong><br>Our legitimate interest in developing and promoting our business.</p>
+    <p style="margin:0;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Retention Period</strong><br>For our customers: their personal data are retained for the duration of our business relationship. For our prospects: their personal data are retained for a period of 3 years starting from the last contact with us.</p>
+  </div>
+
+  <div class="callout" style="margin-bottom:16px;">
+    <h4 style="margin-bottom:6px;">To send newsletters, requests and direct marketing mailings</h4>
+    <p style="margin:0 0 8px;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Legal Basis</strong><br>For our customers: our legitimate interest in winning customer loyalty. For our prospects: your consent (BtoC) or our legitimate interest (BtoB).</p>
+    <p style="margin:0;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Retention Period</strong><br>Personal data are retained for a period of 3 years starting from the last contact with us or until you withdraw your consent.</p>
+  </div>
+
+  <div class="callout" style="margin-bottom:16px;">
+    <h4 style="margin-bottom:6px;">To answer to your information request and other inquiries</h4>
+    <p style="margin:0 0 8px;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Legal Basis</strong><br>Our legitimate interest in responding to your inquiries.</p>
+    <p style="margin:0;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Retention Period</strong><br>Personal data are retained during the processing of your request and is deleted once the request has been processed.</p>
+  </div>
+
+  <div class="callout" style="margin-bottom:16px;">
+    <h4 style="margin-bottom:6px;">To elaborate analytics of navigation and site audience</h4>
+    <p style="margin:0 0 8px;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Legal Basis</strong><br>Your consent.</p>
+    <p style="margin:0;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Retention Period</strong><br>The personal data are retained for 26 months.</p>
+  </div>
+
+  <div class="callout" style="margin-bottom:16px;">
+    <h4 style="margin-bottom:6px;">To process data subjects' requests to exercise their rights</h4>
+    <p style="margin:0 0 8px;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Legal Basis</strong><br>Our legitimate interest in responding to your requests and keeping records of them.</p>
+    <p style="margin:0;"><strong style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">Retention Period</strong><br>If we ask you a proof of identity: we only retain it for the necessary time to verify your identity. If you exercise your right to object to direct marketing: we keep this information for 3 years.</p>
+  </div>
+
+  <h2>4. Who are the recipients of your personal data?</h2>
+  <ul>
+    <li>Selected staff of our company, based on our internal data access policy.</li>
+    <li>Our processors: hosting provider, CRM tool, mailing provider, form creation provider, payment service provider.</li>
+    <li>If applicable: public and private organisations, exclusively to comply with our legal obligations.</li>
+  </ul>
+
+  <h2>5. Are your personal data likely to be transferred outside the European Union?</h2>
+  <p>Your personal data is hosted for the duration of the processing on the servers of the company Amazon Web Services and Supabase located in the United States or India or Singapore.</p>
+  <p>As part of the tools we use, your personal data may be transferred outside the European Union. The transfer of your personal data in this context is secured with the use of following safeguards:</p>
+  <ul>
+    <li>Either personal data are transferred to a country that has been recognized as ensuring an adequate level of protection by a decision of the European Commission, in accordance with article 45 of the GDPR</li>
+    <li>Or the personal data are transferred to a country whose level of data protection has not been recognized as adequate to the GDPR: in this case these transfers are based on appropriate safeguards indicated in article 46 of the GDPR</li>
+    <li>Or the personal data are transferred under the any appropriate safeguards described in Chapter V of the GDPR</li>
+  </ul>
+
+  <h2>6. What rights do you have regarding your personal data?</h2>
+  <p>You have the following rights with regard to your personal data:</p>
+  <ul>
+    <li><strong>Right to be informed:</strong> this is precisely why we have drafted this privacy policy as defined by articles 13 and 14 of the GDPR.</li>
+    <li><strong>Right of access:</strong> you have the right to access all your personal data at any time as defined by article 15 of the GDPR.</li>
+    <li><strong>Right to rectification:</strong> you have the right to rectify your inaccurate, incomplete or obsolete personal data at any time as defined by article 16 of the GDPR.</li>
+    <li><strong>Right to restriction of processing:</strong> you have the right to restrict the processing of your personal data in certain cases defined in article 18 of the GDPR.</li>
+    <li><strong>Right to erasure ("right to be forgotten"):</strong> you have the right to request that your personal data be deleted and to prohibit any future collection as defined by article 17 of the GDPR.</li>
+    <li><strong>Right to file a complaint:</strong> to a competent supervisory authority (in France, the CNIL), under GDPR article 77, if you consider that the processing of your personal data constitutes a breach of applicable regulations.</li>
+    <li><strong>Right to define instructions:</strong> related to the retention, deletion and communication of your personal data after your death.</li>
+    <li><strong>Right to withdraw your consent:</strong> at any time for purposes based on consent, Article 7 of the GDPR provides that you may withdraw your consent at any time.</li>
+    <li><strong>Right to data portability:</strong> under specific conditions defined in article 20 of the GDPR, you have the right to receive the personal data you have provided us in a standard machine-readable format.</li>
+    <li><strong>Right to object:</strong> You have the right to object to the processing of your personal data as defined by article 21 of the GDPR.</li>
+  </ul>
+  <p>You can exercise these rights by writing us using the contact details below.</p>
+
+  <h2>7. Contact information for data privacy matters</h2>
+  <p>Contact email: <a href="mailto:hello@fereai.xyz"><strong>hello@fereai.xyz</strong></a></p>
+  <p>Contact address: Intershore Consult (Cayman) Ltd. Suite 303, George Town Financial Center, 90 Fort Street, George Town, Grand Cayman, Cayman Islands.</p>
+
+  <h2>8. Modifications</h2>
+  <p>We may modify this privacy policy at any time, in particular in order to comply with any regulatory, jurisprudential, editorial or technical change. These modifications will apply on the date of entry into force of the modified version. Please regularly consult the latest version of this privacy policy.</p>
+`,
+
+/* ══════════ SECURITY POLICY ══════════ */
+'security-policy': `
+  <div class="doc-badge animate-in"><i class="fa-solid fa-lock"></i> Legal</div>
+  <h1 class="animate-in delay-1">Security & Vulnerability <em>Disclosure Policy.</em></h1>
+
+  <p>At Fere AI, we take the security of our AI platform and our users' data seriously. If you are a security researcher and have discovered a potential vulnerability in our systems, we appreciate your help in disclosing it to us in a responsible manner.</p>
+
+  <h2>How to Report a Bug</h2>
+  <p>If you believe you've found a security issue, please email us at: <a href="mailto:hello@fereai.xyz"><strong>hello@fereai.xyz</strong></a></p>
+  <p>Please include the following in your report:</p>
+  <ul>
+    <li>A description of the vulnerability.</li>
+    <li>Steps to reproduce the issue (proof-of-concept).</li>
+    <li>The potential impact of the bug.</li>
+    <li>Your name/handle for acknowledgement.</li>
+  </ul>
+
+  <h2>Our Commitment to You</h2>
+  <p>While we do not currently offer a monetary bug bounty, we promise to:</p>
+  <ul>
+    <li>Acknowledge receipt of your report within 7 Working Days.</li>
+    <li>Keep you updated as we investigate and fix the issue.</li>
+    <li>Credit you on our website if you are the first to report a valid issue.</li>
+  </ul>
+  <div class="callout callout-green">
+    <h4><i class="fa-solid fa-shield-halved" style="margin-right:6px;"></i> Safe Harbor</h4>
+    <p>We will not pursue legal action against researchers who act in good faith and follow these guidelines.</p>
+  </div>
+
+  <h2>Responsible Disclosure Guidelines</h2>
+  <p>To protect our users, we ask that you:</p>
+  <ul>
+    <li>Do not attempt to access, modify, or delete user data.</li>
+    <li>Do not perform Denial of Service (DoS) attacks.</li>
+    <li>Give us a reasonable amount of time to fix the issue before sharing it publicly.</li>
+    <li>Avoid using automated scanners that may disrupt our services.</li>
+  </ul>
+
+  <p style="margin-top:36px; color:var(--text-muted); font-style:italic;">Thank you for helping keep Fere AI safe!</p>
+`
     };
+
+    const legalPages = ['terms', 'privacy', 'security-policy'];
 
     /* ═══ PAGE SWITCHING ═══ */
     function showPage(pageId) {
       clearSims();
+      const isLegal = legalPages.includes(pageId);
+      document.querySelector('.sidebar').classList.toggle('legal-hidden', isLegal);
+      document.querySelector('.content-area').classList.toggle('legal-full', isLegal);
+
       container.classList.add('fade-out');
       setTimeout(() => {
         container.innerHTML = pages[pageId] || '';
@@ -1458,6 +1695,8 @@ faq: `
         document.querySelector('.sidebar').classList.remove('open');
         document.querySelector('.mobile-overlay').classList.remove('open');
       }, 50);
+      /* Sync hash */
+      if (location.hash !== '#' + pageId) location.hash = pageId;
     }
 
     /* ═══ FAQ TOGGLE ═══ */
@@ -1597,7 +1836,12 @@ faq: `
       } catch(e) {}
     })();
 
-    window.addEventListener('load', () => showPage('overview'));
+    function getPageFromHash() {
+      const h = location.hash.replace('#', '');
+      return pages[h] ? h : 'overview';
+    }
+    window.addEventListener('load', () => showPage(getPageFromHash()));
+    window.addEventListener('hashchange', () => showPage(getPageFromHash()));
   </script>
 </body>
 </html>
