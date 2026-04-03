@@ -704,8 +704,8 @@ overview: `
       <tr><td class="hl">Schedules</td><td>Run any complex instruction on repeat — autonomous trading that thinks every cycle</td></tr>
       <tr><td class="hl">Polymarket Discovery</td><td>AI-curated prediction markets — discover the best bets, with auto-trading coming soon</td></tr>
       <tr><td class="hl">Wallet</td><td>Always visible, always secure — powered by Coinbase CDP Server Wallets</td></tr>
-      <tr><td class="hl">Credits</td><td>The fuel for your agent — free daily claims, purchase with any crypto token</td></tr>
-      <tr><td class="hl">Refer & Earn</td><td>Share referral codes, earn 200 credits per friend who signs up</td></tr>
+      <tr><td class="hl">Credits</td><td>The fuel for your agent — 200 free at signup, then buy $5 / $10 / $20 credit packs with any crypto token</td></tr>
+      <tr><td class="hl">Refer & Earn</td><td>Share referral codes, earn credits when referred friends start using Fere</td></tr>
       <tr><td class="hl">Points</td><td>Track your activity, climb the weekly leaderboard, build your streak</td></tr>
     </tbody>
   </table>
@@ -1115,7 +1115,7 @@ wallet: `
 credits: `
   <div class="doc-badge animate-in"><i class="fa-solid fa-coins"></i> Credits</div>
   <h1 class="animate-in delay-1">Powering Your <em>Agent.</em></h1>
-  <p class="subtitle animate-in delay-2">Every action Fere takes on your behalf costs credits. Think of credits as the fuel that powers your AI agent — you get a generous free allocation, can claim daily refills, and purchase more when you need them.</p>
+  <p class="subtitle animate-in delay-2">Every action Fere takes on your behalf costs credits. Think of credits as the fuel that powers your AI agent — you get a free signup bonus, and can purchase credit packs when you need more.</p>
 
   <h2>How Credits Work</h2>
   <p>Credits are the currency of the Fere platform. When Fere runs a query, scans the market, or executes a scheduled task, it costs credits. Your current credit balance is always visible in the <strong>top-right corner</strong> of the screen.</p>
@@ -1129,7 +1129,7 @@ credits: `
   </table>
 
   <h2>Free Credits</h2>
-  <p>Fere gives you credits for free so you can start using the platform immediately — no credit card required.</p>
+  <p>Fere gives you credits for free so you can start exploring the platform immediately — no credit card required.</p>
 
   <div class="feature-grid">
     <div class="feature-card">
@@ -1138,52 +1138,66 @@ credits: `
       <p>Every new user receives <strong>200 credits</strong> the moment they create an account. Enough to explore every feature.</p>
     </div>
     <div class="feature-card">
-      <div class="card-icon"><i class="fa-solid fa-calendar-check"></i></div>
-      <h4>Daily Claim</h4>
-      <p>Claim <strong>250 free credits</strong> every 24 hours. Just click the claim button — no strings attached.</p>
+      <div class="card-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+      <h4>14-Day Window</h4>
+      <p>Signup credits are valid for <strong>14 days</strong>. Unused signup credits expire after that — purchased credits never expire.</p>
     </div>
     <div class="feature-card">
-      <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
-      <h4>Balance Cap</h4>
-      <p>Free daily claims are available when your balance is under <strong>1,000 credits</strong>. This encourages active usage over hoarding.</p>
+      <div class="card-icon"><i class="fa-solid fa-gift"></i></div>
+      <h4>Referral Credits</h4>
+      <p>Earn credits when friends you refer start using Fere. See <strong>Refer &amp; Earn</strong> for details.</p>
     </div>
     <div class="feature-card">
-      <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-      <h4>24h Cooldown</h4>
-      <p>One claim per 24-hour window. The counter resets exactly 24 hours after your last claim.</p>
+      <div class="card-icon"><i class="fa-solid fa-infinity"></i></div>
+      <h4>Purchased Credits</h4>
+      <p>Credits you buy via credit packs <strong>never expire</strong>. They stay in your account until you use them.</p>
     </div>
   </div>
 
   <div class="callout callout-green">
     <h4>The Math</h4>
-    <p>With 250 free credits per day at 15 credits per query, you get roughly <strong>16 free agent conversations daily</strong> — more than enough for active trading and research. Power users who need more can purchase additional credits.</p>
+    <p>With 200 free signup credits at 15 credits per query, you get roughly <strong>13 agent conversations</strong> to try everything out. After that, credit packs start at just <strong>$5 for 300 credits</strong>.</p>
   </div>
 
-  <h2>Purchasing Credits</h2>
-  <p>Need more? You can buy credits directly with crypto from your Fere wallet. Click <strong>"Add Credits"</strong> from the profile menu (top-right avatar) or the credits display.</p>
+  <h2>Credit Packs</h2>
+  <p>Need more credits? Purchase a credit pack directly with crypto from your Fere wallet. Click <strong>"Add Credits"</strong> from the profile menu (top-right avatar) or the credits display.</p>
+
+  <table class="compare-table">
+    <thead><tr><th>Pack</th><th class="hl">Credits</th><th>Effective Rate</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">$5</td><td>300 credits</td><td>60 credits / $</td></tr>
+      <tr><td class="hl">$10</td><td>650 credits</td><td>65 credits / $</td></tr>
+      <tr><td class="hl">$20</td><td>1,400 credits</td><td>70 credits / $</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-warm">
+    <h4>Bigger Packs, Better Value</h4>
+    <p>Higher-tier packs give you more credits per dollar. The $20 pack grants <strong>17% more credits per dollar</strong> than the $5 pack.</p>
+  </div>
 
   <div class="step-flow">
     <div class="step-item">
       <div class="step-line"><div class="step-dot">1</div><div class="step-connector"></div></div>
-      <div class="step-content"><h4>Open Recharge</h4><p>Click your profile avatar (top-right) → "Add Credits" to open the Recharge Credits dialog.</p></div>
+      <div class="step-content"><h4>Open Add Credits</h4><p>Click your profile avatar (top-right) → "Add Credits" to open the dialog.</p></div>
     </div>
     <div class="step-item">
       <div class="step-line"><div class="step-dot">2</div><div class="step-connector"></div></div>
-      <div class="step-content"><h4>Enter Amount</h4><p>Enter the USD amount you want to spend. The conversion rate is <strong>$1 = 100 credits</strong>.</p></div>
+      <div class="step-content"><h4>Choose a Pack</h4><p>Select one of the three credit packs: <strong>$5</strong>, <strong>$10</strong>, or <strong>$20</strong>.</p></div>
     </div>
     <div class="step-item">
       <div class="step-line"><div class="step-dot">3</div><div class="step-connector"></div></div>
-      <div class="step-content"><h4>Select Payment Token</h4><p>Choose which chain (Monad, Solana, Base) and token to pay with. Search for any token on the selected chain.</p></div>
+      <div class="step-content"><h4>Select Payment Token</h4><p>Choose which chain (Ethereum, Base, Arbitrum, Solana, BNB, Polygon) and token to pay with.</p></div>
     </div>
     <div class="step-item">
       <div class="step-line"><div class="step-dot">4</div></div>
-      <div class="step-content"><h4>Confirm & Run</h4><p>Review the generated transaction and click "Run Recipe" to complete the purchase. Credits are added instantly.</p></div>
+      <div class="step-content"><h4>Confirm</h4><p>Review the transaction and confirm. Credits are added to your account once the on-chain transfer completes.</p></div>
     </div>
   </div>
 
   <div class="callout callout-info">
     <h4>Pay With Any Token</h4>
-    <p>You're not limited to stablecoins. You can recharge credits using any token on any supported chain — ETH, SOL, MON, memecoins, anything in your wallet. Fere handles the conversion.</p>
+    <p>You're not limited to stablecoins. You can pay using any token on any supported chain — ETH, SOL, USDC, memecoins, anything in your wallet. Fere handles the conversion.</p>
   </div>
 `,
 
@@ -1191,10 +1205,10 @@ credits: `
 referral: `
   <div class="doc-badge animate-in"><i class="fa-solid fa-gift"></i> Refer & Earn</div>
   <h1 class="animate-in delay-1">Share Fere. <em>Get Rewarded.</em></h1>
-  <p class="subtitle animate-in delay-2">Invite friends to Fere and earn credits for every person who signs up with your referral code. It's the easiest way to keep your agent fueled.</p>
+  <p class="subtitle animate-in delay-2">Invite friends to Fere and earn credits when they start actively using the platform. It's the easiest way to keep your agent fueled.</p>
 
   <h2>How It Works</h2>
-  <p>Open <strong>Refer and Earn</strong> from the left sidebar. You'll see your unique referral codes — short alphanumeric codes you can share with anyone. When someone signs up using your code, you earn <strong>200 credits</strong> per successful invite.</p>
+  <p>Open <strong>Refer and Earn</strong> from the left sidebar. You'll see your unique referral codes — short alphanumeric codes you can share with anyone. When someone signs up using your code and spends at least <strong>$10 on credit packs</strong>, you earn referral credits.</p>
 
   <div class="step-flow">
     <div class="step-item">
@@ -1207,21 +1221,23 @@ referral: `
     </div>
     <div class="step-item">
       <div class="step-line"><div class="step-dot">3</div><div class="step-connector"></div></div>
-      <div class="step-content"><h4>They Sign Up</h4><p>Your friend creates a Fere account and enters your referral code during signup.</p></div>
+      <div class="step-content"><h4>They Sign Up &amp; Recharge</h4><p>Your friend creates a Fere account with your referral code and purchases at least <strong>$10</strong> worth of credit packs.</p></div>
     </div>
     <div class="step-item">
       <div class="step-line"><div class="step-dot">4</div></div>
-      <div class="step-content"><h4>You Both Earn</h4><p>You receive 200 credits. No cap on referrals — the more people you bring, the more you earn.</p></div>
+      <div class="step-content"><h4>You Earn Credits</h4><p>Once the $10 spending threshold is met, you receive referral credits automatically.</p></div>
     </div>
   </div>
 
   <div class="callout callout-warm">
-    <h4>Referral Leaderboard</h4>
-    <p>The Refer and Earn page also shows a <strong>leaderboard ranked by credits earned</strong> from referrals. Top referrers are displayed publicly — compete for the top spot and earn bragging rights along with a stockpile of credits.</p>
+    <h4>Lifetime Cap</h4>
+    <p>Referral credit rewards have a lifetime cap of <strong>2,000 credits</strong>. After you hit the cap, successful referrals still earn you <strong>points</strong> toward the weekly leaderboard.</p>
   </div>
 
-  <h2>Quick Math</h2>
-  <p>Each referral earns you <strong>200 credits</strong> — that's $2 worth, or roughly 13 free AI agent conversations. Refer 5 friends and you've earned 1,000 credits without spending a cent. It's the fastest way to build your balance.</p>
+  <div class="callout callout-info">
+    <h4>Referral Leaderboard</h4>
+    <p>The Refer and Earn page shows a <strong>leaderboard ranked by referral activity</strong>. Top referrers are displayed publicly — compete for the top spot.</p>
+  </div>
 `,
 
 /* ══════════ POINTS ══════════ */
@@ -1385,28 +1401,28 @@ faq: `
   <div class="faq-item" onclick="toggleFaq(this)">
     <button class="faq-q">How much does it cost to use Fere?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
-      <p>Each AI agent conversation costs <strong>15 credits</strong>. A scheduled Market Pulse execution costs <strong>70 credits</strong>. You get 200 credits free at signup and can claim 250 more every 24 hours (up to a 1,000 balance cap). The conversion rate for purchased credits is <strong>$1 = 100 credits</strong>, so a single agent query costs about $0.15.</p>
+      <p>Each AI agent conversation costs <strong>15 credits</strong>. A scheduled Market Pulse execution costs <strong>70 credits</strong>. You get 200 credits free at signup (valid for 14 days). Credit packs start at <strong>$5 for 300 credits</strong>, so a single agent query costs about $0.25. Larger packs give you more credits per dollar.</p>
     </div>
   </div>
 
   <div class="faq-item" onclick="toggleFaq(this)">
     <button class="faq-q">How do I get free credits?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
-      <p>Three ways: <strong>(1)</strong> You get 200 credits free when you sign up. <strong>(2)</strong> You can claim 250 credits every 24 hours as long as your balance is below 1,000. <strong>(3)</strong> Refer friends using your referral code — you earn 200 credits per successful invite with no cap.</p>
+      <p>Two ways: <strong>(1)</strong> You get 200 credits free when you sign up — valid for 14 days. <strong>(2)</strong> Refer friends using your referral code — you earn credits when they start using Fere (subject to a spending threshold and lifetime cap).</p>
     </div>
   </div>
 
   <div class="faq-item" onclick="toggleFaq(this)">
-    <button class="faq-q">What's the daily credit cap?<i class="fa-solid fa-chevron-down"></i></button>
+    <button class="faq-q">Do credits expire?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
-      <p>You can claim your free 250 daily credits as long as your current balance is <strong>below 1,000 credits</strong>. If you have 1,000 or more, the claim is blocked until you use some. This is designed to keep credits flowing to active users rather than being stockpiled.</p>
+      <p><strong>Signup credits</strong> expire 14 days after you create your account. <strong>Purchased credits</strong> (from credit packs) <strong>never expire</strong> — they stay in your account until you use them.</p>
     </div>
   </div>
 
   <div class="faq-item" onclick="toggleFaq(this)">
     <button class="faq-q">How do points differ from credits?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
-      <p><strong>Credits</strong> are the currency you spend to use Fere's features — they're consumed when the agent runs queries or scheduled tasks. <strong>Points</strong> are a reward metric that tracks your activity level. You earn points passively by using the platform, and they determine your position on the weekly leaderboard. Points refresh every Monday; credits don't expire.</p>
+      <p><strong>Credits</strong> are the currency you spend to use Fere's features — they're consumed when the agent runs queries or scheduled tasks. <strong>Points</strong> are a reward metric that tracks your activity level. You earn points passively by using the platform, and they determine your position on the weekly leaderboard. Points refresh every Monday. Purchased credits never expire; signup credits expire after 14 days.</p>
     </div>
   </div>
 
