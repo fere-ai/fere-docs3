@@ -705,7 +705,7 @@ overview: `
       <tr><td class="hl">Polymarket Discovery</td><td>AI-curated prediction markets — discover the best bets, with auto-trading coming soon</td></tr>
       <tr><td class="hl">Wallet</td><td>Always visible, always secure — powered by Coinbase CDP Server Wallets</td></tr>
       <tr><td class="hl">Credits</td><td>The fuel for your agent — 200 free at signup, then buy $5 / $10 / $20 credit packs with any crypto token</td></tr>
-      <tr><td class="hl">Refer & Earn</td><td>Share referral codes, earn credits when referred friends start using Fere</td></tr>
+      <tr><td class="hl">Refer & Earn</td><td>Share codes — earn 200 credits per friend who reaches $10 cumulative eligible credit-pack spend (lifetime cap), plus leaderboard points</td></tr>
       <tr><td class="hl">Points</td><td>Track your activity, climb the weekly leaderboard, build your streak</td></tr>
     </tbody>
   </table>
@@ -1145,7 +1145,7 @@ credits: `
     <div class="feature-card">
       <div class="card-icon"><i class="fa-solid fa-gift"></i></div>
       <h4>Referral Credits</h4>
-      <p>Earn credits when friends you refer start using Fere. See <strong>Refer &amp; Earn</strong> for details.</p>
+      <p>Earn <strong>200 credits</strong> per successful referral (after your friend&rsquo;s eligible spend crosses the threshold). Referral credits are spent <strong>after</strong> signup credits. Each grant can expire after <strong>14 days</strong> if you complete no agent queries in that window — see <strong>Refer &amp; Earn</strong>.</p>
     </div>
     <div class="feature-card">
       <div class="card-icon"><i class="fa-solid fa-infinity"></i></div>
@@ -1205,10 +1205,11 @@ credits: `
 referral: `
   <div class="doc-badge animate-in"><i class="fa-solid fa-gift"></i> Refer & Earn</div>
   <h1 class="animate-in delay-1">Share Fere. <em>Get Rewarded.</em></h1>
-  <p class="subtitle animate-in delay-2">Invite friends to Fere and earn credits when they start actively using the platform. It's the easiest way to keep your agent fueled.</p>
+  <p class="subtitle animate-in delay-2">Invite friends to Fere and earn credits when they complete eligible credit-pack spend. It&rsquo;s one of the easiest ways to keep your agent fueled.</p>
 
   <h2>How It Works</h2>
-  <p>Open <strong>Refer and Earn</strong> from the left sidebar. You'll see your unique referral codes — short alphanumeric codes you can share with anyone. When someone signs up using your code and spends at least <strong>$10 on credit packs</strong>, you earn referral credits.</p>
+  <p>Open <strong>Refer and Earn</strong> from the left sidebar. You&rsquo;ll see your unique referral codes — short alphanumeric codes you can share with anyone.</p>
+  <p>You earn <strong>200 credits</strong> plus <strong>5 points</strong> when someone you referred completes <strong>$10 cumulative</strong> eligible spend on <strong>credit packs</strong> — for example on-chain wallet top-ups or card / Commerce checkouts, where those options are available in your app. <strong>Subscription</strong> charges and <strong>trading fees</strong> do not count toward this $10 threshold.</p>
 
   <div class="step-flow">
     <div class="step-item">
@@ -1221,17 +1222,22 @@ referral: `
     </div>
     <div class="step-item">
       <div class="step-line"><div class="step-dot">3</div><div class="step-connector"></div></div>
-      <div class="step-content"><h4>They Sign Up &amp; Recharge</h4><p>Your friend creates a Fere account with your referral code and purchases at least <strong>$10</strong> worth of credit packs.</p></div>
+      <div class="step-content"><h4>They Sign Up &amp; Spend on Credit Packs</h4><p>Your friend creates a Fere account with your referral code, then reaches <strong>$10 cumulative</strong> eligible credit-pack spend (tracked across qualifying top-ups).</p></div>
     </div>
     <div class="step-item">
       <div class="step-line"><div class="step-dot">4</div></div>
-      <div class="step-content"><h4>You Earn Credits</h4><p>Once the $10 spending threshold is met, you receive referral credits automatically.</p></div>
+      <div class="step-content"><h4>Rewards Unlock</h4><p>When the threshold is met, you receive <strong>200 credits</strong> and <strong>5 points</strong>. Your friend receives <strong>5 points</strong> for activating.</p></div>
     </div>
+  </div>
+
+  <div class="callout callout-info">
+    <h4>Referral Credit Expiry</h4>
+    <p>Each batch of referral credits expires <strong>14 days after it is granted</strong> if you (the referrer) have <strong>no completed agent queries</strong> in that window. Signup credits and purchased credits follow different rules — see <strong>Credits</strong>.</p>
   </div>
 
   <div class="callout callout-warm">
     <h4>Lifetime Cap</h4>
-    <p>Referral credit rewards have a lifetime cap of <strong>2,000 credits</strong>. After you hit the cap, successful referrals still earn you <strong>points</strong> toward the weekly leaderboard.</p>
+    <p>Referral <strong>credit</strong> rewards are capped at <strong>10 successful referrals</strong> — <strong>2,000 credits</strong> total at 200 credits each. After you hit the cap, successful referrals still earn you <strong>5 points</strong> each toward the weekly leaderboard.</p>
   </div>
 
   <div class="callout callout-info">
@@ -1408,7 +1414,7 @@ faq: `
   <div class="faq-item" onclick="toggleFaq(this)">
     <button class="faq-q">How do I get free credits?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
-      <p>Two ways: <strong>(1)</strong> You get 200 credits free when you sign up — valid for 14 days. <strong>(2)</strong> Refer friends using your referral code — you earn credits when they start using Fere (subject to a spending threshold and lifetime cap).</p>
+      <p>Two ways: <strong>(1)</strong> You get 200 credits free when you sign up — valid for 14 days. <strong>(2)</strong> Refer friends using your referral code — you earn <strong>200 credits</strong> (plus points) when each referred user reaches <strong>$10 cumulative</strong> eligible credit-pack spend, up to a lifetime referral-credit cap; after the cap you still earn points per successful referral.</p>
     </div>
   </div>
 
@@ -1416,13 +1422,14 @@ faq: `
     <button class="faq-q">Do credits expire?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
       <p><strong>Signup credits</strong> expire 14 days after you create your account. <strong>Purchased credits</strong> (from credit packs) <strong>never expire</strong> — they stay in your account until you use them.</p>
+      <p><strong>Referral credits</strong> are different: each grant is kept in its own batch and can expire <strong>14 days after that grant</strong> if you (the referrer) complete no agent queries in that window. Referral credits are also consumed <strong>after</strong> signup credits when you use Fere.</p>
     </div>
   </div>
 
   <div class="faq-item" onclick="toggleFaq(this)">
     <button class="faq-q">How do points differ from credits?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
-      <p><strong>Credits</strong> are the currency you spend to use Fere's features — they're consumed when the agent runs queries or scheduled tasks. <strong>Points</strong> are a reward metric that tracks your activity level. You earn points passively by using the platform, and they determine your position on the weekly leaderboard. Points refresh every Monday. Purchased credits never expire; signup credits expire after 14 days.</p>
+      <p><strong>Credits</strong> are the currency you spend to use Fere's features — they're consumed when the agent runs queries or scheduled tasks. <strong>Points</strong> are a reward metric that tracks your activity level. You earn points passively by using the platform, and they determine your position on the weekly leaderboard. Points refresh every Monday. Purchased credits never expire; signup credits expire after 14 days; referral credit batches can expire under the inactivity rule described on <strong>Refer &amp; Earn</strong>.</p>
     </div>
   </div>
 
