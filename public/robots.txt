@@ -5,17 +5,25 @@
 User-agent: *
 Allow: /
 
-# AI / LLM crawlers (documentation is intended to be quotable; do not use for training if policy conflicts with yours)
 User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: Google-Extended
 Allow: /
 
 User-agent: PerplexityBot
-Allow: /
-
-User-agent: anthropic-ai
 Allow: /
 
 # Google Search Console — submit this exact URL
