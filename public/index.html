@@ -720,7 +720,7 @@ overview: `
       <tr><td class="hl">Wallet</td><td>Always visible, always secure — powered by Coinbase CDP Server Wallets</td></tr>
       <tr><td class="hl">Credits</td><td>The fuel for your agent — 200 free at signup, then buy $5 / $10 / $20 credit packs with any crypto token</td></tr>
       <tr><td class="hl">Refer & Earn</td><td>Share codes — earn 200 credits per friend who reaches $10 cumulative eligible credit-pack spend (lifetime cap), plus leaderboard points</td></tr>
-      <tr><td class="hl">Points</td><td>Track your activity, climb the weekly leaderboard, build your streak</td></tr>
+      <tr><td class="hl">Points</td><td>Earn points through on-chain trades, Polymarket bets, and credit purchases — climb the weekly leaderboard</td></tr>
     </tbody>
   </table>
 `,
@@ -1264,10 +1264,10 @@ referral: `
 points: `
   <div class="doc-badge animate-in"><i class="fa-solid fa-trophy"></i> Points & Leaderboard</div>
   <h1 class="animate-in delay-1">Use Fere. <em>Earn Points.</em></h1>
-  <p class="subtitle animate-in delay-2">Points are a measure of your activity on Fere. The more you use the platform, the more points you accumulate — and the higher you climb on the leaderboard. Points refresh every Monday.</p>
+  <p class="subtitle animate-in delay-2">Points reward your on-chain activity and credit purchases — the more you transact, the more you earn. Climb the leaderboard and build your streak. Points refresh every Monday.</p>
 
   <h2>How Points Work</h2>
-  <p>Points are earned passively just by using Fere. Every trade, every chat, every Market Pulse run — it all counts. Open <strong>Points & Leaderboard</strong> from the left sidebar to see your stats.</p>
+  <p>Points are earned through spend-volume actions: on-chain transactions (swaps, bridges, transfers), Polymarket trades, and credit purchases. Open <strong>Points & Leaderboard</strong> from the left sidebar to see your stats.</p>
 
   <h2>What You See</h2>
   <p>The Points dashboard gives you a clear snapshot of your standing:</p>
@@ -1286,12 +1286,16 @@ points: `
     <tbody>
       <tr><td class="hl">Referral Reward</td><td>5 points per referral you make</td></tr>
       <tr><td class="hl">Referred Bonus</td><td>5 points when you're referred by someone</td></tr>
-      <tr><td class="hl">Market Pulse Run</td><td>1 point per summary generated</td></tr>
       <tr><td class="hl">On-Chain Transaction</td><td>1× per USD of transaction value</td></tr>
+      <tr><td class="hl">Polymarket Order</td><td>1× per USD of order value</td></tr>
       <tr><td class="hl">Credit Purchase</td><td>1× per USD spent on credits</td></tr>
-      <tr><td class="hl">Chat</td><td>0.20 points per conversation</td></tr>
     </tbody>
   </table>
+
+  <div class="callout callout-warm">
+    <h4>Deactivated Activities</h4>
+    <p>Market Pulse and Chat no longer earn points. Historical points from these activities are preserved.</p>
+  </div>
 
   <div class="callout callout-info">
     <h4>Weekly Refresh</h4>
@@ -1299,7 +1303,7 @@ points: `
   </div>
 
   <h2>Points Breakdown</h2>
-  <p>On the Points page, you'll see a <strong>Points Breakdown</strong> section showing exactly where your points came from — a visual bar chart with categories like On-Chain Transaction, Market Pulse, and Chat. Click the <strong>"How to Earn Points"</strong> button for the full breakdown modal.</p>
+  <p>On the Points page, you'll see a <strong>Points Breakdown</strong> section showing exactly where your points came from — a visual bar chart with categories like On-Chain Transaction, Polymarket, and Credit Purchase. Categories with zero points are automatically hidden. Click the <strong>"How to Earn Points"</strong> button for the full breakdown modal.</p>
 
   <h2>Leaderboard</h2>
   <p>Below the breakdown, the <strong>Leaderboard</strong> shows the top 30 performers for the current week. Your rank, username (partially masked for privacy), and point total are displayed. If you're in the top positions, you'll see gold, silver, and bronze medals next to your rank.</p>
@@ -1443,7 +1447,7 @@ faq: `
   <div class="faq-item" onclick="toggleFaq(this)">
     <button class="faq-q">How do points differ from credits?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
-      <p><strong>Credits</strong> are the currency you spend to use Fere's features — they're consumed when the agent runs queries or scheduled tasks. <strong>Points</strong> are a reward metric that tracks your activity level. You earn points passively by using the platform, and they determine your position on the weekly leaderboard. Points refresh every Monday. Purchased credits never expire; signup credits expire after 14 days; referral credit batches can expire under the inactivity rule described on <strong>Refer &amp; Earn</strong>.</p>
+      <p><strong>Credits</strong> are the currency you spend to use Fere's features — they're consumed when the agent runs queries or scheduled tasks. <strong>Points</strong> are a reward metric earned through spend-volume actions: on-chain transactions, Polymarket trades, and credit purchases. They determine your position on the weekly leaderboard. Points refresh every Monday. Purchased credits never expire; signup credits expire after 14 days; referral credit batches can expire under the inactivity rule described on <strong>Refer &amp; Earn</strong>.</p>
     </div>
   </div>
 
