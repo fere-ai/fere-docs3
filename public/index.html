@@ -617,7 +617,415 @@
 
   <!-- ═══ MAIN ═══ -->
   <main class="main" id="main-scroll">
-    <div class="content-area doc" id="content-container"></div>
+    <div class="content-area doc" id="content-container"><noscript>
+      <style>
+        .content-area .delay-1, .content-area .delay-2, .content-area .delay-3, .content-area .delay-4 { opacity: 1 !important; animation: none !important; }
+        .content-area .animate-in { opacity: 1 !important; animation: none !important; }
+        .content-area .sim-terminal, .content-area .digest-preview { display: none; }
+        .content-area .faq-a { max-height: none !important; padding: 0 0 16px !important; }
+        .content-area .faq-q i { display: none; }
+      </style>
+      <section id="noscript-overview">
+        <h1>AI Agents That <em>Actually Trade.</em></h1>
+        <p>Fere AI is an autonomous AI agent with its own wallet. Tell it what you want in plain English — it researches, reasons, and executes trades on your behalf, across every major chain, around the clock.</p>
+        <p>Powered by Coinbase CDP, Base, Uniswap, and 1inch. Fere AI is an official <a href="https://www.coinbase.com/developer-platform/discover/case-studies/fereai">Coinbase Developer Platform case study</a> — recognized for building scalable, autonomous trading agents powered by CDP Server Wallets.</p>
+        <h2>What Is Fere?</h2>
+        <p>Think of Fere as an AI assistant — like the ones you already use for writing or coding — but built specifically for crypto, and loaded with its own wallet. You talk to it, it thinks, and it acts.</p>
+        <p>You can ask it to do simple things like swap tokens, or complex things like <em>"scan Base for undervalued tokens, check their social sentiment, and buy the best one."</em> It breaks that down into steps, executes them in order, and reports back what it did and why.</p>
+        <h2>What Can You Do?</h2>
+        <ul>
+          <li><strong>Trade With Words</strong> — Describe what you want in plain language. Fere handles routing, gas, execution — everything.</li>
+          <li><strong>TP/SL on Any Token</strong> — Set take-profit and stop-loss on even the most obscure tokens — memecoins, microcaps, anything.</li>
+          <li><strong>Gasless Cross-Chain</strong> — Swap across Base, Ethereum, Solana, Monad and more without worrying about gas or bridges.</li>
+          <li><strong>Autonomous Schedules</strong> — Write a complex strategy once. Have it run every hour, every day — Fere thinks and trades on its own.</li>
+          <li><strong>Market Pulse</strong> — Fere scans millions of messages across social media. Get a full market summary in 2 minutes, not 2 hours.</li>
+          <li><strong>Limit Orders Anywhere</strong> — Place limit orders on any DEX token — not just the ones listed on centralized exchanges.</li>
+        </ul>
+        <h2>The Interface at a Glance</h2>
+        <ul>
+          <li><strong>Left sidebar</strong> — Navigation to Home, Market Pulse, Schedules, Polymarket Discovery, your Chats history, and more.</li>
+          <li><strong>Center</strong> — The main chat area with the <em>"Ask Fere Anything..."</em> input, trending topic suggestions, and recipe cards.</li>
+          <li><strong>Right panel</strong> — Your wallet, always visible — showing total balance, token holdings across chains, active limit orders, and TP/SL positions.</li>
+        </ul>
+        <table>
+          <thead><tr><th>Section</th><th>What It Does</th></tr></thead>
+          <tbody>
+            <tr><td>Fere AI Agent</td><td>Your main AI — chat with it to trade, research, analyze, and manage positions.</td></tr>
+            <tr><td>Market Pulse</td><td>Scans millions of social messages to give you a crypto digest for any time window.</td></tr>
+            <tr><td>Recipes</td><td>Pre-built one-click workflows to get you started — trending tokens, DCA, and more.</td></tr>
+            <tr><td>Schedules</td><td>Run any complex instruction on repeat — autonomous trading that thinks every cycle.</td></tr>
+            <tr><td>Polymarket Discovery</td><td>AI-curated prediction markets — discover the best bets, with auto-trading coming soon.</td></tr>
+            <tr><td>Wallet</td><td>Always visible, always secure — powered by Coinbase CDP Server Wallets.</td></tr>
+            <tr><td>Credits</td><td>The fuel for your agent — 200 free at signup, then buy $5 / $10 / $20 credit packs with any crypto token.</td></tr>
+            <tr><td>Refer &amp; Earn</td><td>Share codes — earn 200 credits per friend who reaches $10 cumulative eligible credit-pack spend (lifetime cap), plus leaderboard points.</td></tr>
+            <tr><td>Points</td><td>Earn points through on-chain trades, Polymarket bets, and credit purchases — climb the weekly leaderboard.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="noscript-agent">
+        <h1>Meet Your <em>AI Agent.</em></h1>
+        <p>Fere AI is the central intelligence you interact with. It's a conversational AI agent — you tell it what you want, it thinks through the problem, and takes action with its own loaded wallet.</p>
+        <h2>How It Works</h2>
+        <p>The main interface is a chat. You'll see the <strong>"Ask Fere Anything..."</strong> input front and center, with your wallet always visible on the right. Below the input, you'll notice <strong>trending topic suggestions</strong> — these are AI-generated conversation starters based on what's happening in crypto right now. You can click any of them, or type your own message.</p>
+        <p>When you send a message, Fere doesn't just pattern-match keywords and fire off a trade. It <strong>decomposes your request into tasks</strong>, reasons about each one, and executes them in the right order. If something is ambiguous, it asks you to clarify before acting.</p>
+        <h2>What Can You Ask?</h2>
+        <ul>
+          <li><strong>Simple:</strong> "Buy $50 of ETH on Base" — Fere checks your wallet, finds the best route, estimates gas, and asks you to confirm before executing.</li>
+          <li><strong>Intermediate:</strong> "Set a limit order to buy BRETT if it drops 15%. Set TP at +40% and SL at -20%." — Fere fetches the current price, calculates your targets, places the limit order, and arms the take-profit and stop-loss.</li>
+          <li><strong>Advanced:</strong> "Scan Base for tokens between $500k-$2M market cap. Check their social sentiment on Twitter and Farcaster. If any scores above 80/100, buy $5 worth." — Fere creates a multi-step plan and only executes a trade on candidates that pass your threshold.</li>
+        </ul>
+        <h2>Task Decomposition &amp; Planning</h2>
+        <p>Under the hood, Fere uses a state-of-the-art orchestration system that breaks your natural language message into discrete, ordered tasks. Each task is handled by a specialized sub-agent — one for market data, one for sentiment analysis, one for trade execution, and so on.</p>
+        <p>This is what makes Fere different from bots that just execute a fixed command. Fere <strong>plans</strong>, <strong>reasons</strong>, and <strong>adapts</strong>. If the sentiment check comes back bearish, it won't blindly buy — it will tell you why it chose not to trade.</p>
+        <ul>
+          <li><strong>Multi-Step Planning</strong> — Complex instructions are broken into ordered tasks, each executed by the right specialist agent.</li>
+          <li><strong>Reasoning, Not Rules</strong> — Fere adapts to what it finds. It makes decisions based on live data — not static if-else scripts.</li>
+          <li><strong>Asks Before Acting</strong> — If your message is ambiguous, Fere asks follow-up questions instead of guessing wrong.</li>
+          <li><strong>Full Transparency</strong> — Every step, every data point, every decision — logged in the execution trail for you to review.</li>
+          <li><strong>Retries &amp; Fallbacks</strong> — Failed route? Fere automatically retries with alternatives — no more lost trades during peak demand or hype periods.</li>
+        </ul>
+        <h3>Chat History</h3>
+        <p>Every conversation with Fere is saved. You'll see your past chats listed in the left sidebar under <strong>Chats</strong> — click any one to pick up where you left off.</p>
+      </section>
+
+      <section id="noscript-pulse">
+        <h1>Market Pulse — Never Miss <em>Anything.</em></h1>
+        <p>Fere scans millions of messages across every major crypto channel — Twitter/X, Telegram, Discord, Farcaster, Reddit, Signal, and news outlets — and distills it into one beautiful, actionable summary.</p>
+        <h2>How It Works</h2>
+        <p>Open <strong>Market Pulse</strong> from the left sidebar, choose a time window — say, the last 8 hours — and hit generate. Within seconds, Fere's agents comb through the entire fire hose of crypto social media and deliver a structured report covering everything that happened while you were away.</p>
+        <ol>
+          <li><strong>Choose Your Window</strong> — Select how far back you want to look — 4 hours, 8 hours, 24 hours, or custom.</li>
+          <li><strong>Fere Scans Everything</strong> — Millions of messages across Twitter/X, Telegram, Discord, Farcaster, Reddit, Signal, and news — analyzed by AI in real time.</li>
+          <li><strong>Get Your Digest</strong> — A beautifully structured report with key narratives, alpha calls, whale movements, on-chain signals, and degen plays.</li>
+        </ol>
+        <h2>Schedule Your Daily Briefing</h2>
+        <p>Don't want to even open the app? You can schedule Market Pulse to be delivered to your <strong>email</strong> or <strong>Telegram</strong> every morning. Wake up, read your digest over coffee, and know exactly where the market stands.</p>
+        <h2>Data Sources</h2>
+        <ul>
+          <li><strong>Twitter / X</strong> — Key influencers, trending topics, alpha calls, and sentiment shifts.</li>
+          <li><strong>Telegram &amp; Discord</strong> — Private group chatter, whale alerts, project announcements.</li>
+          <li><strong>Farcaster &amp; Reddit</strong> — Onchain social sentiment, emerging narratives, community alpha.</li>
+          <li><strong>News &amp; Signal</strong> — Breaking news, regulatory updates, macro signals.</li>
+        </ul>
+      </section>
+
+      <section id="noscript-recipes">
+        <h1>Recipes — One-Click <em>Workflows.</em></h1>
+        <p>Recipes are pre-built, ready-to-run workflows that help you get the most out of Fere without writing a single message. Pick one, set a few parameters, and hit run.</p>
+        <h2>What Are Recipes?</h2>
+        <p>Think of recipes as starter templates. Each one packages a common task — like finding trending tokens, dollar-cost averaging, or buying a token on a specific chain — into a one-click experience. They're designed to help new users see what Fere can do before diving into writing complex strategies themselves.</p>
+        <p>You'll find recipe cards right on the Home screen, below the main input bar. You can also browse the full library by clicking <strong>"View Recipe Library"</strong>.</p>
+        <h2>How to Use a Recipe</h2>
+        <ol>
+          <li><strong>Browse Recipes</strong> — See the available recipes on your Home screen or the Recipe Library.</li>
+          <li><strong>Configure</strong> — Set your parameters — which chain, how many results, budget, frequency, etc.</li>
+          <li><strong>Run</strong> — Hit run and watch Fere execute. The agent creates a plan, runs each task, and returns results.</li>
+          <li><strong>Act on Results</strong> — Review the output and take action from there.</li>
+        </ol>
+        <h2>Available Recipes</h2>
+        <ul>
+          <li><strong>Trending Tokens</strong> — Find the top movers on any chain by volume — filtered for safety, liquidity, and honeypot risk.</li>
+          <li><strong>DCA on Frequency</strong> — Dollar-cost average into any token on a daily, weekly, or custom schedule.</li>
+          <li><strong>Buy Token on Chain</strong> — Buy a specific token on any supported chain with automatic verification and routing.</li>
+          <li><strong>More Coming</strong> — New recipes are added regularly.</li>
+        </ul>
+        <p><strong>Recipe Marketplace (Coming Soon):</strong> Soon, you'll be able to create powerful strategies, package them as recipes, and share or sell them to other Fere users.</p>
+      </section>
+
+      <section id="noscript-schedules">
+        <h1>Schedules — Set It. <em>Forget It.</em></h1>
+        <p>Schedules let you take any instruction — no matter how complex — and have Fere run it automatically on a recurring basis. This is autonomous trading that thinks and reasons every single cycle.</p>
+        <h2>What Are Schedules?</h2>
+        <p>A schedule is a strategy that runs on repeat. You write it once, tell Fere how often to run it, and then sit back. Every cycle, the agent goes through the full reasoning process — scanning, analyzing, deciding, and (if conditions are met) trading.</p>
+        <p>This isn't a dumb cron job. Every run is a <strong>fresh thinking session</strong>. The agent evaluates live data each time and makes independent decisions based on what it finds right now. And: <strong>Fere remembers.</strong></p>
+        <h2>Persistent Memory Across Runs</h2>
+        <p>Every time a schedule runs, the agent doesn't start from scratch — it carries forward everything it learned from previous runs. By day 7 of an hourly scan, your agent has accumulated a rich dataset of every token it evaluated, every score it gave, every trade it made or skipped, and every market pattern it observed.</p>
+        <p>The agent gets <strong>progressively smarter</strong> over time, using intelligent compaction and context maps to distill weeks of data into the most relevant signals.</p>
+        <h2>Example: Hourly Token Scout</h2>
+        <p><em>"Go to Base chain and find tokens between $10M-$20M market cap. Analyze them on socials and technical analysis and give them a score based on performance. Buy a token if it scores 90/100."</em></p>
+        <p>Every hour, Fere scans the chain for candidates, runs social and TA analysis on each, scores them, and only executes a trade if the quality bar is met.</p>
+        <h2>What You See</h2>
+        <ul>
+          <li><strong>Run history</strong> — Every past execution with full details on what the agent found and did.</li>
+          <li><strong>Status</strong> — Whether the schedule is active, paused, or completed.</li>
+          <li><strong>Next run</strong> — When the agent will execute next.</li>
+          <li><strong>Results</strong> — Tokens analyzed, scores given, trades made (if any).</li>
+        </ul>
+        <h2>More Schedule Ideas</h2>
+        <ul>
+          <li><strong>Morning Alpha Scout</strong> — "Every day at 7am, find the top 5 trending tokens on Solana and give me a sentiment report."</li>
+          <li><strong>Momentum Sniper</strong> — "Every 30 min, check if any Base token gained 50%+ in the last hour with $100k+ volume. Buy $20."</li>
+          <li><strong>Portfolio Guardian</strong> — "Every 4 hours, check my positions. If any dropped 25% from entry, sell and move to USDC."</li>
+          <li><strong>DCA With Brains</strong> — "Every Monday, buy $50 of ETH — but only if the 7-day RSI is below 40. Otherwise, skip."</li>
+        </ul>
+      </section>
+
+      <section id="noscript-polymarket">
+        <h1>Polymarket Discovery — Smarter Prediction <em>Markets.</em></h1>
+        <p>Fere's Polymarket Discovery section uses AI to surface the best prediction markets worth trading — doing the discovery work that Polymarket's own homepage can't.</p>
+        <h2>What Is This?</h2>
+        <p>Polymarket is the leading prediction market platform — you bet on real-world outcomes. But finding the right markets to trade is hard. There are thousands of markets, and the homepage algorithm isn't great at surfacing the ones with the best risk-reward opportunities.</p>
+        <p>Fere solves this. An AI agent constantly analyzes active Polymarket markets — evaluating odds, volume, time to expiry, news sentiment, and historical patterns — to recommend the markets most worth your attention.</p>
+        <h2>What You Get</h2>
+        <ul>
+          <li><strong>AI-Curated Discovery</strong> — Fere surfaces the highest-signal markets across all categories — politics, crypto, sports, world events.</li>
+          <li><strong>Market Analysis</strong> — Each recommended market comes with context — why the odds look interesting, what the news says, and where money is flowing.</li>
+          <li><strong>Trade Suggestions (Coming)</strong> — Soon, Fere will offer specific position recommendations.</li>
+          <li><strong>Autonomous Trading (Coming)</strong> — The end goal: let Fere trade Polymarket for you — placing bets, managing positions, and capturing opportunities you'd miss.</li>
+        </ul>
+      </section>
+
+      <section id="noscript-crosschain">
+        <h1>Cross-Chain — One Wallet. <em>Every Chain.</em></h1>
+        <p>You don't need to think about chains, bridges, or gas tokens. Tell Fere what you want to buy — it figures out where your money is and how to get it there.</p>
+        <h2>Supported Chains</h2>
+        <p>Ethereum, Base, Solana, Berachain, Monad, Optimism, Polygon, Arbitrum. New chains are added regularly.</p>
+        <h2>How It Works</h2>
+        <p>You don't say "bridge ETH from Mainnet to Base." You say what you actually want: <em>"I want to buy AERO on Base using my Mainnet ETH"</em>.</p>
+        <p>Fere automatically detects you lack funds on Base, finds your ETH on Mainnet, selects the optimal bridge, bundles the bridge and swap into one flow, estimates time (~2 min), and asks for confirmation before executing.</p>
+        <h2>Gasless by Default</h2>
+        <p>You don't need to hold native gas tokens on every chain you want to trade on. Fere handles gas abstraction through the CDP wallet infrastructure — meaning you can trade on Base, Monad, or Arbitrum without first buying and bridging gas tokens.</p>
+        <p><strong>Bridge Times:</strong> Fere always estimates completion time before you confirm. Typical ranges: 30 seconds (Base ↔ Optimism) to ~5 minutes (Ethereum → Solana).</p>
+      </section>
+
+      <section id="noscript-mcp">
+        <h1>MCP Support — Use Fere From <em>Any AI Client.</em></h1>
+        <p>FereAI exposes a hosted MCP (Model Context Protocol) server, so you can drive on-chain research, swaps, and portfolio actions from Claude, ChatGPT, Cursor, Codex, Hermes, or Claude Code — wherever you already work.</p>
+        <p><strong>One URL, Every Client:</strong> Point any MCP-aware client at <strong>https://api.fereai.xyz/mcp</strong>. Each provider handles OAuth its own way — usually a one-time browser sign-in linked to your Fere account.</p>
+        <h2>Pick Your Client</h2>
+        <ul>
+          <li><strong>Claude (Desktop &amp; Web)</strong> — Add Fere as a Connector, paste the URL, and finish OAuth in the browser.</li>
+          <li><strong>Claude Code</strong> — Drop the JSON config snippet into your MCP servers config.</li>
+          <li><strong>ChatGPT</strong> — Turn on Developer Mode in Apps, then add the URL as a custom MCP.</li>
+          <li><strong>Hermes</strong> — Paste the URL directly into a Hermes chat — it installs the MCP and prompts for OAuth.</li>
+          <li><strong>Cursor</strong> — Add the JSON snippet under <code>mcpServers</code> in Cursor's MCP settings.</li>
+          <li><strong>Codex</strong> — Use the Streamable HTTP MCP add flow and paste the URL.</li>
+        </ul>
+        <h2>Claude (Desktop &amp; Web)</h2>
+        <p>In Claude, open <strong>Settings → Connectors → Add custom connector</strong> and paste: <code>https://api.fereai.xyz/mcp</code>. Claude will pop up an OAuth window to link your Fere account.</p>
+        <h2>Claude Code &amp; Cursor</h2>
+        <p>Add the following block to your MCP config (typically <code>~/.claude.json</code> or your project-level <code>.mcp.json</code>; in Cursor, open Settings → MCP):</p>
+        <pre><code>{
+  "mcpServers": {
+    "FereAI MCP": {
+      "type": "http",
+      "url": "https://api.fereai.xyz/mcp",
+      "description": "FereAI MCP server for on-chain transactions."
+    }
+  }
+}</code></pre>
+        <h2>ChatGPT</h2>
+        <ol>
+          <li>Open <strong>Settings → Apps &amp; Connectors</strong> and toggle <strong>Developer Mode</strong> on.</li>
+          <li>Click <strong>Add custom MCP</strong> and paste <strong>https://api.fereai.xyz/mcp</strong>.</li>
+          <li>Complete the OAuth prompt to link your Fere account.</li>
+        </ol>
+        <h2>Hermes</h2>
+        <p>Hermes makes this the simplest of all — paste <code>https://api.fereai.xyz/mcp</code> into any chat. Hermes detects it as an MCP endpoint, installs the server, and walks you through OAuth inline. No config file needed.</p>
+        <h2>Codex</h2>
+        <p>In Codex, open the MCP settings and choose <strong>Add Streamable HTTP MCP</strong>. Paste <strong>https://api.fereai.xyz/mcp</strong> as the endpoint and approve the OAuth handshake when prompted.</p>
+        <p><strong>OAuth Is Handled By Your Client:</strong> Fere never sees your client credentials. Each provider runs its own OAuth flow against your Fere account. Revoke access anytime from your Fere account settings.</p>
+      </section>
+
+      <section id="noscript-wallet">
+        <h1>Wallet — Coinbase-Grade <em>Security.</em></h1>
+        <p>Your wallet is always visible on the right side of the screen — showing your balance, assets, and active orders in real time. Under the hood, it's powered by Coinbase's most advanced wallet infrastructure.</p>
+        <h2>What You See</h2>
+        <ul>
+          <li><strong>Total balance</strong> — Your aggregate holdings across all chains.</li>
+          <li><strong>Wallet addresses</strong> — Both your EVM address (for Base, Ethereum, Polygon, etc.) and your Solana address, each with a key icon to export your private key.</li>
+          <li><strong>Add Funds</strong> — One-click deposit into your wallet.</li>
+          <li><strong>Assets tab</strong> — Your token holdings with USD values, organized by chain. A "Hide dust" checkbox filters out tiny balances under $0.05.</li>
+          <li><strong>Limit Orders tab</strong> — All your active limit orders in one place.</li>
+          <li><strong>TP/SL Orders</strong> — Active take-profit and stop-loss positions appear right under the relevant token.</li>
+          <li><strong>Supported chains</strong> — Shown at the bottom of the wallet panel.</li>
+        </ul>
+        <p><strong>Powered by Coinbase CDP Server Wallets:</strong> Every Fere wallet is a Coinbase Developer Platform Server Wallet — the same infrastructure trusted by the world's largest crypto exchange. Private keys live inside Trusted Execution Environments (TEEs) and never leave the secure enclave.</p>
+        <h2>You Own Your Wallet</h2>
+        <p>Your wallet is fully owned by you. Next to each wallet address in the panel, you'll see a key icon. Click it to reveal and export your private key. You can then import that key into any external wallet like MetaMask or Phantom — meaning your funds are never locked inside Fere.</p>
+        <h2>What Makes This Secure</h2>
+        <ul>
+          <li><strong>One wallet, every chain</strong> — A single wallet identity works across all supported EVM chains and Solana.</li>
+          <li><strong>Keys never exposed</strong> — Private keys are generated and stored inside hardware-isolated enclaves. Not even Coinbase or Fere can access them.</li>
+          <li><strong>Policy enforcement</strong> — Transaction rules like spend limits and address allowlists are enforced at the enclave level.</li>
+          <li><strong>Sub-200ms signing</strong> — Wallet creation takes under 500ms. Transaction signing under 200ms.</li>
+          <li><strong>Non-custodial</strong> — Fere cannot seize, freeze, or move your funds. Period.</li>
+        </ul>
+      </section>
+
+      <section id="noscript-credits">
+        <h1>Credits — Powering Your <em>Agent.</em></h1>
+        <p>Every action Fere takes on your behalf costs credits. Think of credits as the fuel that powers your AI agent — you get a free signup bonus, and can purchase credit packs when you need more.</p>
+        <h2>How Credits Work</h2>
+        <p>Credits are the currency of the Fere platform. Chat queries and most scheduled actions use dynamic pricing based on complexity. Market Pulse is fixed at 70 credits for 24h or 40 credits for 12h. Your current credit balance is always visible in the top-right corner of the screen.</p>
+        <table>
+          <thead><tr><th>Action</th><th>Credit Cost</th></tr></thead>
+          <tbody>
+            <tr><td>Fere AI Agent Query</td><td>Dynamic per query (based on complexity)</td></tr>
+            <tr><td>Market Pulse (Scheduled)</td><td>Fixed: 70 credits (24h) or 40 credits (12h)</td></tr>
+          </tbody>
+        </table>
+        <h2>Free Credits</h2>
+        <ul>
+          <li><strong>Signup Bonus</strong> — Every new user receives <strong>200 credits</strong> the moment they create an account.</li>
+          <li><strong>14-Day Window</strong> — Signup credits are valid for <strong>14 days</strong>. Unused signup credits expire after that — purchased credits never expire.</li>
+          <li><strong>Referral Credits</strong> — Earn <strong>200 credits</strong> per successful referral. Referral credits are spent <strong>after</strong> signup credits. Each grant can expire after <strong>14 days</strong> if you complete no agent queries in that window.</li>
+          <li><strong>Purchased Credits</strong> — Credits you buy via credit packs <strong>never expire</strong>.</li>
+        </ul>
+        <h2>Credit Packs</h2>
+        <table>
+          <thead><tr><th>Pack</th><th>Credits</th><th>Effective Rate</th></tr></thead>
+          <tbody>
+            <tr><td>$5</td><td>300 credits</td><td>60 credits / $</td></tr>
+            <tr><td>$10</td><td>650 credits</td><td>65 credits / $</td></tr>
+            <tr><td>$20</td><td>1,400 credits</td><td>70 credits / $</td></tr>
+          </tbody>
+        </table>
+        <p>Higher-tier packs give you more credits per dollar. The $20 pack grants <strong>17% more credits per dollar</strong> than the $5 pack.</p>
+        <ol>
+          <li><strong>Open Add Credits</strong> — Click your profile avatar (top-right) → "Add Credits".</li>
+          <li><strong>Choose a Pack</strong> — Select <strong>$5</strong>, <strong>$10</strong>, or <strong>$20</strong>.</li>
+          <li><strong>Select Payment Token</strong> — Choose which chain (Ethereum, Base, Arbitrum, Solana, BNB, Polygon) and token to pay with.</li>
+          <li><strong>Confirm</strong> — Review the transaction and confirm. Credits are added once the on-chain transfer completes.</li>
+        </ol>
+        <p><strong>Pay With Any Token:</strong> You're not limited to stablecoins. You can pay using any token on any supported chain — ETH, SOL, USDC, memecoins, anything in your wallet.</p>
+      </section>
+
+      <section id="noscript-referral">
+        <h1>Refer &amp; Earn — Share Fere. <em>Get Rewarded.</em></h1>
+        <p>Invite friends to Fere and earn credits when they complete eligible credit-pack spend.</p>
+        <h2>How It Works</h2>
+        <p>Open <strong>Refer and Earn</strong> from the left sidebar. You'll see your unique referral codes — short alphanumeric codes you can share with anyone.</p>
+        <p>You earn <strong>200 credits</strong> plus <strong>5 points</strong> when someone you referred completes <strong>$10 cumulative</strong> eligible spend on <strong>credit packs</strong>. Subscription charges and trading fees do not count toward this $10 threshold.</p>
+        <ol>
+          <li><strong>Copy Your Code</strong> — You get multiple unique referral codes.</li>
+          <li><strong>Share It</strong> — Send the code to friends, post it on social media, share it in your group chats.</li>
+          <li><strong>They Sign Up &amp; Spend on Credit Packs</strong> — Your friend reaches <strong>$10 cumulative</strong> eligible credit-pack spend.</li>
+          <li><strong>Rewards Unlock</strong> — When the threshold is met, you receive <strong>200 credits</strong> and <strong>5 points</strong>. Your friend receives <strong>5 points</strong> for activating.</li>
+        </ol>
+        <p><strong>Referral Credit Expiry:</strong> Each batch of referral credits expires <strong>14 days after it is granted</strong> if you (the referrer) have no completed agent queries in that window.</p>
+        <p><strong>Lifetime Cap:</strong> Referral credit rewards are capped at <strong>10 successful referrals</strong> — <strong>2,000 credits</strong> total. After you hit the cap, successful referrals still earn you 5 points each toward the weekly leaderboard.</p>
+      </section>
+
+      <section id="noscript-points">
+        <h1>Points &amp; Leaderboard — Use Fere. <em>Earn Points.</em></h1>
+        <p>Points reward your on-chain activity and credit purchases — the more you transact, the more you earn. Climb the leaderboard and build your streak. Points refresh every Monday.</p>
+        <h2>How Points Work</h2>
+        <p>Points are earned through spend-volume actions: on-chain transactions (swaps, bridges, transfers), Polymarket trades, and credit purchases.</p>
+        <h2>What You See</h2>
+        <ul>
+          <li><strong>Total</strong> — Your all-time accumulated points.</li>
+          <li><strong>Last Week</strong> — Points earned in the previous weekly cycle.</li>
+          <li><strong>Rank</strong> — Your current position among all users (e.g., Top 10%).</li>
+          <li><strong>Streak</strong> — How many consecutive weeks you've been active.</li>
+        </ul>
+        <h2>How to Earn Points</h2>
+        <table>
+          <thead><tr><th>Activity</th><th>Points Earned</th></tr></thead>
+          <tbody>
+            <tr><td>Referral Reward</td><td>5 points per referral you make</td></tr>
+            <tr><td>Referred Bonus</td><td>5 points when you're referred by someone</td></tr>
+            <tr><td>On-Chain Transaction</td><td>1× per USD of transaction value</td></tr>
+            <tr><td>Polymarket Order</td><td>1× per USD of order value</td></tr>
+            <tr><td>Credit Purchase</td><td>1× per USD spent on credits</td></tr>
+          </tbody>
+        </table>
+        <p>Market Pulse and Chat no longer earn points. Historical points from these activities are preserved.</p>
+        <p><strong>Weekly Refresh:</strong> Points reset every Monday. Your all-time total is tracked separately, so your lifetime contribution is never lost.</p>
+        <h2>Leaderboard</h2>
+        <p>The Leaderboard shows the top 30 performers for the current week. Your rank, username (partially masked for privacy), and point total are displayed.</p>
+      </section>
+
+      <section id="noscript-faq">
+        <h1>Frequently Asked <em>Questions.</em></h1>
+        <p>Everything you need to know about using Fere AI — from wallet ownership to trading features.</p>
+
+        <h2>Wallet &amp; Security</h2>
+
+        <h3>Do I own my wallet? Can Fere access my funds?</h3>
+        <p><strong>Yes, you fully own your wallet.</strong> Fere uses Coinbase CDP Server Wallets, which are non-custodial. Your private keys live inside a Trusted Execution Environment (TEE) — a hardware-isolated enclave that neither Fere nor Coinbase can access.</p>
+        <p>You can export your private key at any time using the key icon next to your wallet address in the wallet panel. Once exported, you can import it into any external wallet like MetaMask or Phantom.</p>
+        <p>Fere cannot seize, freeze, move, or view your private key. This is enforced by architecture, not just policy.</p>
+
+        <h3>How do I export my private key to MetaMask?</h3>
+        <p>Use this to move your <strong>EVM wallet</strong> (Base, Ethereum, Polygon, Arbitrum, etc.) to MetaMask:</p>
+        <ol>
+          <li>In Fere, find your EVM wallet address in the right panel (starts with 0x). Click the key icon next to it to reveal your private key. Copy it.</li>
+          <li>Open MetaMask (browser extension or mobile app).</li>
+          <li>Click the account selector (circle icon at the top).</li>
+          <li>Select <strong>"Add account or hardware wallet"</strong>, then choose <strong>"Import account"</strong>.</li>
+          <li>Make sure "Private Key" is selected as the type. Paste your key and click <strong>Import</strong>.</li>
+        </ol>
+        <p>Your Fere wallet will now appear in MetaMask with an "Imported" label.</p>
+
+        <h3>How do I export my private key to Phantom?</h3>
+        <p>Use this to move your <strong>Solana wallet</strong> to Phantom:</p>
+        <ol>
+          <li>In Fere, find your Solana wallet address in the right panel. Click the key icon to reveal your Solana private key. Copy it.</li>
+          <li>Open Phantom (browser extension or mobile app).</li>
+          <li>Click your profile avatar in the upper-left corner.</li>
+          <li>Click <strong>"Add / Connect Wallet"</strong>, then select <strong>"Import Private Key"</strong>.</li>
+          <li>Enter a name, select <strong>Solana</strong> as the network, paste your private key, and click <strong>Import</strong>.</li>
+        </ol>
+
+        <h3>What is "Hide dust" in the wallet?</h3>
+        <p>The "Hide dust (&lt;$0.05)" checkbox in your wallet panel hides tokens with very small balances — typically leftover fragments from trades. Uncheck it to see everything.</p>
+
+        <h2>Trading</h2>
+
+        <h3>What happens if a trade fails?</h3>
+        <p>Fere has <strong>intelligent retries and fallback routing</strong> built in. If a route fails due to slippage or liquidity, Fere retries with an alternative path before giving up. No funds leave your wallet on a failed transaction — everything is reverted on-chain.</p>
+
+        <h3>What is TP/SL and how does it work?</h3>
+        <p><strong>TP (Take-Profit)</strong> automatically sells your token when it rises to a price you set. <strong>SL (Stop-Loss)</strong> automatically sells when it drops to a price you set. You can set TP/SL on <strong>any token</strong>, including obscure memecoins and microcaps.</p>
+
+        <h3>How do limit orders work on Fere?</h3>
+        <p>Limit orders let you set a price at which you want to buy or sell a token. Once the market reaches your target price, Fere executes the trade automatically. Unlike centralized exchanges, Fere can place limit orders on any DEX token — even ones that aren't listed anywhere else.</p>
+
+        <h3>Does Fere trade automatically?</h3>
+        <p><strong>Yes.</strong> When you ask Fere to execute a trade, it automatically finds the best route with the lowest slippage and executes. For scheduled strategies, the agent executes autonomously based on the conditions you set. You can pause or stop any schedule at any time from the Schedules tab.</p>
+
+        <h2>Schedules &amp; Recipes</h2>
+
+        <h3>Can I stop a schedule once it's running?</h3>
+        <p>Yes. Go to the Schedules tab in the left sidebar, find the schedule you want to stop, and pause or cancel it. It stops immediately — no lock-in.</p>
+
+        <h3>What's the difference between a recipe and a schedule?</h3>
+        <p>A <strong>recipe</strong> is a pre-built, one-click workflow — a template that runs once. A <strong>schedule</strong> is any instruction set to run repeatedly on a timer — every hour, every day, etc.</p>
+
+        <h2>Credits &amp; Rewards</h2>
+
+        <h3>How much does it cost to use Fere?</h3>
+        <p>Each AI agent conversation costs <strong>15 credits</strong>. A scheduled Market Pulse execution costs <strong>70 credits</strong>. You get 200 credits free at signup (valid for 14 days). Credit packs start at <strong>$5 for 300 credits</strong>.</p>
+
+        <h3>How do I get free credits?</h3>
+        <p>(1) You get 200 credits free when you sign up — valid for 14 days. (2) Refer friends using your referral code — you earn <strong>200 credits</strong> when each referred user reaches <strong>$10 cumulative</strong> eligible credit-pack spend.</p>
+
+        <h3>Do credits expire?</h3>
+        <p>Signup credits expire 14 days after you create your account. Purchased credits (from credit packs) never expire. Referral credit batches can expire 14 days after grant if you complete no agent queries in that window.</p>
+
+        <h3>How do points differ from credits?</h3>
+        <p>Credits are the currency you spend to use Fere's features. Points are a reward metric earned through spend-volume actions: on-chain transactions, Polymarket trades, and credit purchases. They determine your position on the weekly leaderboard.</p>
+
+        <h2>General</h2>
+
+        <h3>What are the trending topic pills below the search bar?</h3>
+        <p>Those are AI-generated suggestions based on what's happening in crypto right now. Click any one to start a conversation about that topic.</p>
+
+        <h3>Which chains does Fere support?</h3>
+        <p>Fere currently supports 8 chains: Ethereum, Base, Solana, Berachain, Monad, Optimism, Polygon, and Arbitrum. New chains are added regularly.</p>
+
+        <h3>How do I add funds to my wallet?</h3>
+        <p>Click the <strong>"Add Funds"</strong> button at the top of your wallet panel. You can deposit crypto directly to your Fere wallet addresses — send EVM tokens to your 0x address or SOL to your Solana address.</p>
+
+        <h3>Is my trading data private?</h3>
+        <p>Yes. Your strategies, chat history, and trading activity are encrypted at rest and never shared with third parties. Fere does not use your data to train AI models unless you explicitly opt in via the Rewards Program.</p>
+
+        <h3>Can I see my past conversations?</h3>
+        <p>Yes. All your past conversations are saved and listed in the left sidebar under <strong>Chats</strong>. Click any conversation to reopen it and continue where you left off.</p>
+      </section>
+    </noscript></div>
   </main>
 
   <script>
