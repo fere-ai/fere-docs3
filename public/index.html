@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fere AI — Docs</title>
-  <meta name="description" content="Official Fere AI documentation: autonomous crypto trading agents, Market Pulse, recipes, schedules, Polymarket, cross-chain execution, wallet security, credits, and FAQ." />
+  <meta name="description" content="Official Fere AI documentation: autonomous crypto trading agents, Market Pulse, recipes, strategies, Polymarket, cross-chain execution, wallet security, credits, and FAQ." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://docs.fereai.xyz/" />
   <meta property="og:type" content="website" />
@@ -214,10 +214,10 @@
     body:has(#overview:target) a.nav-item[data-page="overview"],
     body:has(#agent:target) a.nav-item[data-page="agent"],
     body:has(#pulse:target) a.nav-item[data-page="pulse"],
-    body:has(#recipes:target) a.nav-item[data-page="recipes"],
-    body:has(#schedules:target) a.nav-item[data-page="schedules"],
+    body:has(#strategies:target) a.nav-item[data-page="strategies"],
     body:has(#polymarket:target) a.nav-item[data-page="polymarket"],
     body:has(#crosschain:target) a.nav-item[data-page="crosschain"],
+    body:has(#discover:target) a.nav-item[data-page="discover"],
     body:has(#mcp:target) a.nav-item[data-page="mcp"],
     body:has(#wallet:target) a.nav-item[data-page="wallet"],
     body:has(#credits:target) a.nav-item[data-page="credits"],
@@ -614,10 +614,10 @@
       <div class="nav-section">
         <div class="nav-section-title">Features</div>
         <a href="#pulse" class="nav-item" data-page="pulse"><i class="fa-solid fa-signal"></i> Market Pulse</a>
-        <a href="#recipes" class="nav-item" data-page="recipes"><i class="fa-solid fa-layer-group"></i> Recipes</a>
-        <a href="#schedules" class="nav-item" data-page="schedules"><i class="fa-solid fa-clock"></i> Schedules</a>
+        <a href="#strategies" class="nav-item" data-page="strategies"><i class="fa-solid fa-clock"></i> Strategies</a>
         <a href="#polymarket" class="nav-item" data-page="polymarket"><i class="fa-solid fa-chart-pie"></i> Polymarket Discovery</a>
         <a href="#crosschain" class="nav-item" data-page="crosschain"><i class="fa-solid fa-right-left"></i> Cross-Chain</a>
+        <a href="#discover" class="nav-item" data-page="discover"><i class="fa-solid fa-compass"></i> Discover</a>
       </div>
       <div class="nav-section">
         <div class="nav-section-title">Developer Tools</div>
@@ -693,7 +693,7 @@
     </div>
     <div class="feature-card">
       <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
-      <h4>Autonomous Schedules</h4>
+      <h4>Autonomous Strategies</h4>
       <p>Write a complex strategy once. Have it run every hour, every day — Fere thinks and trades on its own.</p>
     </div>
     <div class="feature-card">
@@ -729,7 +729,7 @@
   <h2>The Interface at a Glance</h2>
   <p>When you open Fere, you'll see three main areas:</p>
   <ul>
-    <li><strong>Left sidebar</strong> — Navigation to Home, Market Pulse, Schedules, Polymarket Discovery, your Chats history, and more</li>
+    <li><strong>Left sidebar</strong> — Navigation to Home, Market Pulse, Strategies, Polymarket Discovery, your Chats history, and more</li>
     <li><strong>Center</strong> — The main chat area with the <em>"Ask Fere Anything..."</em> input, trending topic suggestions, and recipe cards to get you started</li>
     <li><strong>Right panel</strong> — Your wallet, always visible — showing your total balance, token holdings across chains, active limit orders, and TP/SL positions</li>
   </ul>
@@ -739,8 +739,7 @@
     <tbody>
       <tr><td class="hl">Fere AI Agent</td><td>Your main AI — chat with it to trade, research, analyze, and manage positions</td></tr>
       <tr><td class="hl">Market Pulse</td><td>Scans millions of social messages to give you a crypto digest for any time window</td></tr>
-      <tr><td class="hl">Recipes</td><td>Pre-built one-click workflows to get you started — trending tokens, DCA, and more</td></tr>
-      <tr><td class="hl">Schedules</td><td>Run any complex instruction on repeat — autonomous trading that thinks every cycle</td></tr>
+      <tr><td class="hl">Strategies</td><td>Run automated strategies on autopilot — buying, rebalancing, and watching the market around the clock</td></tr>
       <tr><td class="hl">Polymarket Discovery</td><td>AI-curated prediction markets — discover the best bets, with auto-trading coming soon</td></tr>
       <tr><td class="hl">Wallet</td><td>Always visible, always secure — powered by Coinbase CDP Server Wallets</td></tr>
       <tr><td class="hl">Credits</td><td>The fuel for your agent — 200 free at signup, then buy $5 / $10 / $20 credit packs with any crypto token</td></tr>
@@ -838,9 +837,12 @@
   <h3>Chat History</h3>
   <p>Every conversation with Fere is saved. You'll see your past chats listed in the left sidebar under <strong>Chats</strong> — click any one to pick up where you left off. This makes it easy to reference previous trades, strategies, or research.</p>
 
+  <h3>Private Chat</h3>
+  <p>Don't want a conversation saved? Enable <strong>Private Chat</strong> in <strong>Settings → Privacy</strong>. When it's on, new conversations don't appear in your history — same AI, same capabilities, just nothing stored. The app home shows "Private Chat" as a reminder while it's active. Toggle it off anytime from the same place.</p>
+
   <div class="callout callout-warm">
     <h4>Always Evolving</h4>
-    <p>Fere's planning and reasoning capabilities are under active research. Long-term thinking, persistent memory across sessions, and increasingly sophisticated strategy decomposition are all in development — the agent gets smarter continuously. When used with <strong>Schedules</strong>, Fere already accumulates and compresses knowledge across runs, building context maps that make every cycle more informed than the last.</p>
+    <p>Fere's planning and reasoning capabilities are under active research. Long-term thinking, persistent memory across sessions, and increasingly sophisticated strategy decomposition are all in development — the agent gets smarter continuously. When used with <strong>Strategies</strong>, Fere already accumulates and compresses knowledge across runs, building context maps that make every cycle more informed than the last.</p>
   </div>
       </section>
 
@@ -962,57 +964,67 @@
   </div>
       </section>
 
-      <section id="schedules" class="doc-page">
-  <div class="doc-badge animate-in"><i class="fa-solid fa-clock"></i> Schedules</div>
-  <h1 class="animate-in delay-1">Set It. <em>Forget It.</em></h1>
-  <p class="subtitle animate-in delay-2">Schedules let you take any instruction — no matter how complex — and have Fere run it automatically on a recurring basis. This is autonomous trading that thinks and reasons every single cycle.</p>
+      <section id="strategies" class="doc-page">
+  <div class="doc-badge animate-in"><i class="fa-solid fa-clock"></i> Strategies</div>
+  <h1 class="animate-in delay-1">Trade While You <em>Sleep.</em></h1>
+  <p class="subtitle animate-in delay-2">Your strategies run on autopilot — buying, rebalancing, and watching the market while you do literally anything else. Describe what you want once, and Fere handles the rest every single cycle.</p>
 
-  <h2>What Are Schedules?</h2>
-  <p>A schedule is a strategy that runs on repeat. You write it once, tell Fere how often to run it, and then sit back. Every cycle, the agent goes through the full reasoning process — scanning, analyzing, deciding, and (if conditions are met) trading.</p>
-  <p>This isn't a dumb cron job. Every run is a <strong>fresh thinking session</strong>. The agent evaluates live data each time and makes independent decisions based on what it finds right now.</p>
-  <p>But here's the part that changes everything: <strong>Fere remembers.</strong></p>
+  <h2>What Are Strategies?</h2>
+  <p>A strategy is an automated instruction that runs on repeat. You describe it in the chat at <strong>/app</strong>, tell Fere how often to run it, and sit back. Every cycle, the agent goes through the full reasoning process — scanning, analyzing, deciding, and (if conditions are met) trading.</p>
+  <p>And here's what makes it powerful: <strong>Fere remembers.</strong></p>
 
-  <h2>Persistent Memory Across Runs</h2>
-  <p>Every time a schedule runs, the agent doesn't start from scratch — it carries forward everything it learned from previous runs. By day 7 of an hourly scan, your agent has accumulated a rich dataset of every token it evaluated, every score it gave, every trade it made or skipped, and every market pattern it observed.</p>
-  <p>This means the agent gets <strong>progressively smarter</strong> over time. It can spot patterns like "this token scored 85 three days ago, dropped to 60 yesterday, and is back at 82 today — that's a recovery signal." A stateless bot running the same command can never do this.</p>
+  <h2>Gets Smarter Over Time</h2>
+  <p>Every time a strategy runs, it carries forward what it found before. By day 7 of an hourly scan, your agent has a rich picture of every token it analyzed, every score it gave, every trade it made or skipped. It can spot things a stateless bot never would — like a token that scored 85 three days ago, dropped to 60 yesterday, and just came back to 82. That's a recovery signal, and Fere catches it because it was watching.</p>
 
   <div class="callout callout-warm">
-    <h4>Intelligent Context, Not Brute Force</h4>
-    <p>Fere doesn't just dump every past result into memory. It uses <strong>intelligent compaction and context maps</strong> to distill weeks of data into the most relevant signals. Think of it as the agent building its own research notebook — organized, compressed, and optimized for decision-making. This is what makes Fere fundamentally different from tools like OpenClaw or other autonomous agents: purpose-built memory architecture tuned specifically for crypto market reasoning.</p>
+    <h4>Context That Compounds</h4>
+    <p>Fere distills past runs into the signals that actually matter — not a wall of logs, but a smart research notebook that makes every cycle more informed than the last.</p>
+  </div>
+
+  <h2>How to Create a Strategy</h2>
+  <p>Go to the main chat at <strong>/app</strong> and describe what you want to automate. The AI sets it up and it appears in <strong>/strategies</strong>. A few examples to get you started:</p>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-arrow-trend-up"></i></div><h4>Trending Token Buyer</h4><p>"Every 3 hours, buy trending tokens on Base under $5M mcap."</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-clock"></i></div><h4>DCA on a Schedule</h4><p>"DCA $50 into ETH every Monday at 9am."</p></div>
   </div>
 
   <h2>Example: Hourly Token Scout</h2>
   <div class="scenario-card">
     <div class="scenario-label"><i class="fa-solid fa-clock"></i> Runs Every Hour</div>
     <div class="scenario-msg">"Go to Base chain and find tokens between $10M-$20M market cap. Analyze them on socials and technical analysis and give them a score based on performance. Buy a token if it scores 90/100."</div>
-    <div class="scenario-what"><strong>Every hour, Fere will:</strong> scan the chain for candidates, run social and TA analysis on each, score them, and only execute a trade if the quality bar is met. You can check in on the Schedules page to see what happened in each run — which tokens were found, what they scored, and whether any trades were made.</div>
+    <div class="scenario-what"><strong>Every hour, Fere will:</strong> scan the chain for candidates, run social and TA analysis on each, score them, and only execute a trade if the quality bar is met. Check the Strategies page after each run to see which tokens were found, what they scored, and whether any trades were made.</div>
   </div>
 
-  <h2>What You See</h2>
-  <p>Open <strong>Schedules</strong> from the left sidebar. For each active schedule, you can see:</p>
+  <h2>The Strategies Page</h2>
+  <p>Click <strong>Strategies</strong> in the top navigation bar. Here's what you'll see:</p>
   <ul>
-    <li><strong>Run history</strong> — Every past execution with full details on what the agent found and did</li>
-    <li><strong>Status</strong> — Whether the schedule is active, paused, or completed</li>
-    <li><strong>Next run</strong> — When the agent will execute next</li>
-    <li><strong>Results</strong> — Tokens analyzed, scores given, trades made (if any)</li>
+    <li><strong>Active / Paused tabs</strong> — The page opens on Active. Switch to Paused to see anything you've stopped, with counts on each tab so you always know where you stand.</li>
+    <li><strong>Strategy cards</strong> — Each card shows your original instruction, how often it runs, when it runs next (or last ran if paused), and how many times it's executed so far.</li>
+    <li><strong>Start a Strategy</strong> — At the bottom of the page, pre-built templates let you launch a strategy in one click without typing anything.</li>
   </ul>
+
+  <h2>Start a Strategy</h2>
+  <p>The <strong>Start a Strategy</strong> section inside the Strategies page has pre-built templates that get you running in one click. Pick one, fill in a few parameters, and Fere creates the full automated strategy for you.</p>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-fire"></i></div><h4>Trending Tokens</h4><p>Buy trending tokens on any chain — filtered for volume, liquidity, and safety — without writing a single message.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-rotate"></i></div><h4>DCA on Frequency</h4><p>Dollar-cost average into any token on a daily, weekly, or custom schedule.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-coins"></i></div><h4>Buy Token on Chain</h4><p>Buy a specific token on any supported chain with automatic routing and verification.</p></div>
+  </div>
+
+  <h2>Strategy Detail Page</h2>
+  <p>Click any strategy card to open its detail page. You'll see the full history of past runs — what the agent found and what it decided — along with a sticky input bar to ask questions, modify the strategy, pause it, or cancel it. A banner at the top shows the next run time and total run count.</p>
 
   <div class="callout callout-info">
     <h4>Pause or Stop Anytime</h4>
-    <p>You're always in control. Go to the Schedules tab, find the schedule you want, and stop it whenever you like. No lock-in, no penalties — your agent pauses immediately.</p>
+    <p>You're always in control. Go to the Strategies tab, find the strategy you want, and stop it whenever you like. No lock-in, no penalties — your agent pauses immediately.</p>
   </div>
 
-  <h2>More Schedule Ideas</h2>
+  <h2>More Strategy Ideas</h2>
   <div class="feature-grid">
     <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-sun"></i></div><h4>Morning Alpha Scout</h4><p>"Every day at 7am, find the top 5 trending tokens on Solana and give me a sentiment report."</p></div>
     <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-bolt"></i></div><h4>Momentum Sniper</h4><p>"Every 30 min, check if any Base token gained 50%+ in the last hour with $100k+ volume. Buy $20."</p></div>
     <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div><h4>Portfolio Guardian</h4><p>"Every 4 hours, check my positions. If any dropped 25% from entry, sell and move to USDC."</p></div>
     <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-chart-line"></i></div><h4>DCA With Brains</h4><p>"Every Monday, buy $50 of ETH — but only if the 7-day RSI is below 40. Otherwise, skip."</p></div>
-  </div>
-
-  <div class="callout callout-warm">
-    <h4>Every Run Gets Smarter</h4>
-    <p>Unlike traditional bots, Fere doesn't just repeat a command. Each scheduled run is a fresh reasoning cycle with access to all previous runs. By week two, your agent has more context about your strategy's performance than you could track manually — and it uses that context to make better decisions every cycle.</p>
   </div>
       </section>
 
@@ -1089,6 +1101,100 @@
     <h4>Bridge Times</h4>
     <p>Fere always estimates completion time before you confirm. Typical ranges: 30 seconds (Base ↔ Optimism) to ~5 minutes (Ethereum → Solana). The agent picks the fastest reliable route automatically.</p>
   </div>
+      </section>
+
+      <section id="discover" class="doc-page">
+  <div class="doc-badge animate-in"><i class="fa-solid fa-compass"></i> Discover</div>
+  <h1 class="animate-in delay-1">Your AI-Curated <em>Token Feed.</em></h1>
+  <p class="subtitle animate-in delay-2">Discover surfaces tokens worth a second look — pulled live from on-chain data and smart-money wallets across Solana, Base, Ethereum, Arbitrum, BNB Chain, and Polygon. Every token here was flagged by Fere's agents for a reason. Buy or sell any of them in one tap — gasless, across all chains.</p>
+
+  <h2>How It Works</h2>
+  <p>Fere's agents run continuously in the background, scanning the markets through two primary data layers:</p>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-link"></i></div><h4>On-Chain Data</h4><p>Real-time prices, volumes, liquidity, holder counts, transactions, and contract metadata — continuously ingested across all six chains.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-wallet"></i></div><h4>Wallet Intelligence</h4><p>Smart-money labels, institutional flows, and accumulation patterns — tracking what the sharpest wallets are doing before anyone else notices.</p></div>
+  </div>
+  <p style="font-size:0.85rem; color:var(--text-secondary);">The list refreshes every few seconds and is re-scored continuously. What's hot at 9 am may not be hot at 9:15. This is curation, not advice — Discover is a starting point for your own research.</p>
+
+  <h2>Signals</h2>
+  <p>Discover uses 13 signals, grouped into two tiers based on typical risk profile. A token can qualify for multiple signals at once — more signals strengthens the case, but does not mean lower risk.</p>
+
+  <h3 style="font-size:0.9rem; font-weight:600; color:var(--accent-green); margin:20px 0 10px;">Lower-Risk Signals</h3>
+  <table class="compare-table">
+    <thead><tr><th>Signal</th><th>What It Flags</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">Safe Bets</td><td>Established tokens with deep liquidity, strong holder counts, and proven track records.</td></tr>
+      <tr><td class="hl">Growth</td><td>Tokens with consistent positive momentum across price, holders, and volume over time.</td></tr>
+      <tr><td class="hl">Vetted</td><td>Tokens that pass automated checks: verified contract, no honeypot signals, locked liquidity.</td></tr>
+      <tr><td class="hl">Inst. Radar</td><td>Tokens being accumulated by institutional or smart-money wallets.</td></tr>
+      <tr><td class="hl">Recovery</td><td>Quality tokens that have bounced from local lows with renewed buying interest.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem; font-weight:600; color:var(--accent-warm); margin:20px 0 10px;">Higher-Risk Signals</h3>
+  <table class="compare-table">
+    <thead><tr><th>Signal</th><th>What It Flags</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">Ignition</td><td>Early breakout signs: volume surge, holder growth, on-chain accumulation in a short window.</td></tr>
+      <tr><td class="hl">Viral</td><td>Tokens trending across social platforms with rapidly growing mentions and engagement.</td></tr>
+      <tr><td class="hl">LP Lock</td><td>New launches where liquidity is locked — a basic anti-rug indicator on otherwise unproven tokens.</td></tr>
+      <tr><td class="hl">Alpha</td><td>Under-the-radar tokens with unusual smart-money activity before broader market awareness.</td></tr>
+      <tr><td class="hl">Diverge</td><td>Tokens where on-chain activity diverges from price action — quiet accumulation, or distribution into rallies.</td></tr>
+      <tr><td class="hl">Revival</td><td>Older, dormant tokens seeing renewed activity and volume after extended periods of inactivity.</td></tr>
+      <tr><td class="hl">Social</td><td>Tokens picking up specifically on Twitter and Farcaster among crypto-native accounts.</td></tr>
+      <tr><td class="hl">Contrarian</td><td>Tokens where retail and smart-money flows are moving in opposite directions.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Reading a Token Card</h2>
+  <p>Each card surfaces the essentials at a glance:</p>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-tag"></i></div><h4>Token Name & Address</h4><p>Tap the address to copy it. The icon is fetched live from on-chain metadata.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-icons"></i></div><h4>Signal Icons</h4><p>Small icons under the token name show every signal that flagged it. Hover any icon for the signal name.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div><h4>Risk Badge</h4><p>Low / Medium / High — factors in liquidity depth, holder concentration, contract age, audit status, and rug indicators. A quick gut-check, not a guarantee.</p></div>
+    <div class="feature-card"><div class="card-icon"><i class="fa-solid fa-chart-column"></i></div><h4>Mkt Cap & Liquidity</h4><p>Fully diluted market cap and total USD-denominated liquidity available across the token's primary pools.</p></div>
+  </div>
+
+  <h2>Buying & Selling</h2>
+  <p>All buys and sells from Discover route through Fere's gasless execution layer. You don't need native gas tokens on any chain — Fere covers gas and settles in the token you're trading.</p>
+  <div class="chain-pills">
+    <div class="chain-pill"><span class="cd" style="background:#9945FF;"></span> Solana</div>
+    <div class="chain-pill"><span class="cd" style="background:#0052FF;"></span> Base</div>
+    <div class="chain-pill"><span class="cd" style="background:#627EEA;"></span> Ethereum</div>
+    <div class="chain-pill"><span class="cd" style="background:#28A0F0;"></span> Arbitrum</div>
+    <div class="chain-pill"><span class="cd" style="background:#F0B90B;"></span> BNB Chain</div>
+    <div class="chain-pill"><span class="cd" style="background:#8247E5;"></span> Polygon</div>
+  </div>
+
+  <div class="callout callout-warm">
+    <h4>Slippage, Routing, Confirmation</h4>
+    <p>Slippage, priority fees, and routing are handled automatically. You see the quoted price before confirming and can cancel up to the moment of submission.</p>
+  </div>
+
+  <h2>Filters</h2>
+  <p>Filters narrow the list to tokens flagged with a specific signal. Multiple filters stack — selecting <strong>Safe Bets</strong> and <strong>Growth</strong> together shows only tokens that hit both, which tends to return a small, high-conviction list. Removing all filters shows every flagged token across all signals.</p>
+
+  <h2>FAQ</h2>
+  <details class="faq-item">
+    <summary class="faq-q">How often does Discover update?<i class="fa-solid fa-chevron-down"></i></summary>
+    <div class="faq-a"><p>Continuously. The "Updated Ns ago" indicator at the top right shows the last refresh — new signals can appear within seconds of meeting our thresholds.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Why is a token I expected not showing up?<i class="fa-solid fa-chevron-down"></i></summary>
+    <div class="faq-a"><p>A token only appears if it currently meets the threshold for at least one of the 13 signals. Tokens that previously trended may have rolled off if their momentum or smart-money interest faded.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">What's the difference between Discover and Market Pulse?<i class="fa-solid fa-chevron-down"></i></summary>
+    <div class="faq-a"><p>Market Pulse summarizes overall market chatter and narratives. Discover surfaces specific tokens to consider. Pulse tells you what the market is talking about; Discover tells you which tokens are worth looking at right now.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Is Discover financial advice?<i class="fa-solid fa-chevron-down"></i></summary>
+    <div class="faq-a"><p>No. Every signal is a data-driven flag, not a recommendation. Risk badges are heuristics, not guarantees. Always do your own research before trading, and never trade more than you can afford to lose.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Can I trade tokens not in Discover?<i class="fa-solid fa-chevron-down"></i></summary>
+    <div class="faq-a"><p>Yes — use the Agent to research and trade any token directly by name or contract address, on any of our six supported chains.</p></div>
+  </details>
       </section>
 
       <section id="mcp" class="doc-page">
@@ -1515,24 +1621,24 @@
       <p><strong>Yes.</strong> When you ask Fere to execute a trade, it automatically finds the best route with the lowest slippage and executes. Unlike manual wallet-based trading, Fere has <strong>built-in retries and fallbacks</strong> — if a route fails (common during high-traffic periods or token hype), the agent automatically retries with an alternative route instead of just showing you an error.</p>
       <p>This is a major advantage over traditional wallets, where failed transactions during peak demand simply fail and you have to start over. Fere handles the retry logic intelligently so you don't miss opportunities.</p>
       <p><strong>One caveat:</strong> Fere can't fix chain-level performance issues. If a blockchain itself is congested or down, retries won't help — but Fere will tell you exactly what's happening.</p>
-      <p>For <strong>scheduled strategies</strong>, the agent executes autonomously based on the conditions you set — that's the whole point of automation. You can pause or stop any schedule at any time from the Schedules tab.</p>
+      <p>For <strong>automated strategies</strong>, the agent executes autonomously based on the conditions you set — that's the whole point of automation. You can pause or stop any strategy at any time from the Strategies tab.</p>
     </div>
   </details>
 
-  <h2>Schedules & Recipes</h2>
+  <h2>Strategies</h2>
 
   <details class="faq-item">
-    <summary class="faq-q">Can I stop a schedule once it's running?<i class="fa-solid fa-chevron-down"></i></summary>
+    <summary class="faq-q">Can I stop a strategy once it's running?<i class="fa-solid fa-chevron-down"></i></summary>
     <div class="faq-a">
-      <p><strong>Yes, absolutely.</strong> Go to the <strong>Schedules</strong> tab in the left sidebar, find the schedule you want to stop, and pause or cancel it. It stops immediately — no lock-in, no waiting for the next cycle to complete. You can also restart it later if you change your mind.</p>
+      <p><strong>Yes, absolutely.</strong> Click <strong>Strategies</strong> in the top navigation, find the strategy you want to stop, and pause or cancel it. It stops immediately — no lock-in, no waiting for the next cycle to complete. You can also restart it later if you change your mind.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary class="faq-q">What's the difference between a recipe and a schedule?<i class="fa-solid fa-chevron-down"></i></summary>
+    <summary class="faq-q">What's the difference between a recipe and a strategy?<i class="fa-solid fa-chevron-down"></i></summary>
     <div class="faq-a">
       <p>A <strong>recipe</strong> is a pre-built, one-click workflow — think of it as a template that runs once. You configure it, hit run, and get results.</p>
-      <p>A <strong>schedule</strong> is any instruction (including custom ones you write yourself) set to run repeatedly on a timer — every hour, every day, etc. Schedules are more powerful because they're autonomous and ongoing, and the agent thinks fresh each cycle.</p>
+      <p>A <strong>strategy</strong> is any instruction (including custom ones you write yourself) set to run repeatedly on a timer — every hour, every day, etc. Strategies are more powerful because they're autonomous and ongoing, and the agent thinks fresh each cycle.</p>
     </div>
   </details>
 
