@@ -1353,6 +1353,13 @@ faq: `
   <h2>Trading</h2>
 
   <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How does withdrawing from Hyperliquid work?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-a">
+      <p>When you withdraw <strong>Hyperliquid HyperCore USDC</strong>, you choose a supported <strong>destination chain and token</strong> — you can search the catalog for the asset you want to receive (similar to other sells), not only tokens you already hold elsewhere. The app keeps your withdrawal summary on screen while settlement finishes, which can take a few minutes.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
     <button class="faq-q">What happens if a trade fails?<i class="fa-solid fa-chevron-down"></i></button>
     <div class="faq-a">
       <p>Fere has <strong>intelligent retries and fallback routing</strong> built in — so most failures that would stop a normal wallet are handled automatically. If a route fails due to slippage or liquidity, Fere retries with an alternative path before giving up. If it truly can't execute (e.g., a chain is down), it tells you exactly why and suggests what to do next. No funds leave your wallet on a failed transaction — everything is reverted on-chain.</p>
